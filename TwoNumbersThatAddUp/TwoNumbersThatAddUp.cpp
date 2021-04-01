@@ -2,6 +2,44 @@
 //
 
 #include <iostream>
+#include <vector>
+#include<unordered_set>
+#include "QuickSort.h"
+#include "AuxiliaryFunctions.h"
+
+int binarySearch(int s, int arr[], int arrSize) {
+  int start = 0;
+  int end = arrSize - 1;
+  int mid;
+
+  while (start <= end) {
+    mid = (end + start) / 2;
+    if (arr[mid] < s)
+      start = mid + 1;
+    else if (arr[mid] > s)
+      end = mid - 1;
+    else
+      return mid;
+  }
+  return 0; // placeholder to avoid compiler error
+
+}
+
+std::vector<int> findSum(int arr[], int arrSize, int s) {
+  // You can copy your implementation of a sorting function here
+  // Out implementation of QuickSort can be used and is prepended as 
+  std::cout << "s " << s << "\n";
+  quickSort(arr, 0, arrSize - 1);
+
+  std::vector<int> elements;
+
+  auto half = div(s, 2).quot;
+  std::cout << "half " << half << " other half " << s - half << "\n";
+  printArray(arr, arrSize);
+
+  // Write your code here
+  return elements;
+}
 
 int main()
 {

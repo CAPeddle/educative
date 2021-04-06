@@ -28,14 +28,27 @@ int binarySearch(int s, int arr[], int arrSize) {
 std::vector<int> findSum(int arr[], int arrSize, int s) {
   // You can copy your implementation of a sorting function here
   // Out implementation of QuickSort can be used and is prepended as 
-  std::cout << "s " << s << "\n";
+  //std::cout << "s " << s << "\n";
   quickSort(arr, 0, arrSize - 1);
 
   std::vector<int> elements;
 
   auto half = div(s, 2).quot;
-  std::cout << "half " << half << " other half " << s - half << "\n";
+  //std::cout << "half " << half << " other half " << s - half << "\n";
   printArray(arr, arrSize);
+  //std::cout << "\n";
+
+  for (int i = half; i != s; i += copysign(1, s))
+  {
+    auto location = binarySearch(i, arr, arrSize);
+    if (location > 0) {
+        //std::cout << location << " " << arr[location] << "\n";
+        auto otherValue = s - i;
+        //std::cout << "othervalue " << otherValue;
+        elements.push_back(i);
+        elements.push_back(otherValue);
+    }
+  }
 
   // Write your code here
   return elements;
@@ -43,7 +56,24 @@ std::vector<int> findSum(int arr[], int arrSize, int s) {
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
+    int  arr[] = { 1,21,3,14,5,60,7,6 };
+    int  arrSize = sizeof(arr) / sizeof(arr[0]);
+    auto value = 81;
+
+    auto answer = findSum(arr, arrSize, value);
+    arrSize = sizeof(answer) / sizeof(answer[0]);
+    printVector(answer);
+    std::cout << "\n\n";
+
+    int  arr2[] = { -26, -25, -8, -1 , 12, 17 };
+    arrSize = sizeof(arr2) / sizeof(arr2[0]);
+    value = -33;
+        
+    answer = findSum(arr2, arrSize, value);
+    arrSize = sizeof(answer) / sizeof(answer[0]);
+    printVector(answer);
+    std::cout << "\n\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -42,6 +42,23 @@ int binarySearch(int s, int arr[], int arrSize) {
             return mid;
     }
     return -2; // placeholder to avoid compiler error
+}
+
+int binarySearch(int s, std::vector<int> arr) {
+    int start = 0;
+    int end = arr.size() - 1;
+    int mid;
+
+    while (start <= end) {
+        mid = (end + start) / 2;
+        if (arr[mid] < s)
+            start = mid + 1;
+        else if (arr[mid] > s)
+            end = mid - 1;
+        else
+            return mid;
+    }
+    return -2; // placeholder to avoid compiler error
 
 }
 

@@ -59,7 +59,26 @@ int binarySearch(int s, std::vector<int> arr) {
             return mid;
     }
     return -2; // placeholder to avoid compiler error
+}
 
+int containingIndex(int s, std::vector<int> arr) {
+    int start = 0;
+    int end = arr.size() - 1;
+    int mid = (end + start) / 2;;
+
+    if (arr[mid] == s) return mid;
+
+    if (arr[mid] < s) { 
+        start = mid; 
+    }
+
+    while (start < end) {
+        if (arr[start] <= s && arr[start + 1] > s) return start;
+
+        ++start;
+
+    }
+    return start; // placeholder to avoid compiler error
 }
 
 int findMax(int* arr, int start, int end) {

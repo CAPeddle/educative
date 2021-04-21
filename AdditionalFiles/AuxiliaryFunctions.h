@@ -10,12 +10,12 @@ void printArray(int* arr, int arrSize) {
     cout << endl;
 }
 
-void printVector(const std::vector<int>& _vector) {
-    for (std::vector<int>::const_iterator i = _vector.begin(); i != _vector.end(); i++)
+inline void printVector(const std::vector<int>& _vector) {
+    for (auto i = _vector.begin(); i != _vector.end(); i++)
         std::cout << *i << ' ';
 }
 
-int findMin(int* arr, int start, int end) {
+inline int findMin(int* arr, int start, int end) {
     if (end <= 0 || start < 0)
         return -1;
 
@@ -27,7 +27,8 @@ int findMin(int* arr, int start, int end) {
     return minInd;
 }
 
-int binarySearch(int s, int arr[], int arrSize) {
+
+inline int binarySearch(int s, int arr[], int arrSize) {
     int start = 0;
     int end = arrSize - 1;
     int mid;
@@ -44,7 +45,7 @@ int binarySearch(int s, int arr[], int arrSize) {
     return -2; // placeholder to avoid compiler error
 }
 
-int binarySearch(int s, std::vector<int> arr) {
+inline int binarySearch(int s, std::vector<int> arr) {
     int start = 0;
     int end = arr.size() - 1;
     int mid;
@@ -61,7 +62,7 @@ int binarySearch(int s, std::vector<int> arr) {
     return -2; // placeholder to avoid compiler error
 }
 
-int containingIndex(int s, std::vector<int> arr) {
+inline int containingIndex(int s, std::vector<int> arr) {
     int start = 0;
     int end = arr.size() - 1;
     int mid = (end + start) / 2;;
@@ -81,7 +82,7 @@ int containingIndex(int s, std::vector<int> arr) {
     return start; // placeholder to avoid compiler error
 }
 
-int findMax(int* arr, int start, int end) {
+inline int findMax(int* arr, int start, int end) {
     if (end <= 0 || start < 0)
         return -1;
 

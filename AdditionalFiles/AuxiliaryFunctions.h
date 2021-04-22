@@ -4,6 +4,10 @@
 
 using namespace std;
 
+//int arr[] = { -5,-3,0,1,3,3,3,4,5 };
+//int s = 3;
+//int arrSize = sizeof(arr) / sizeof(arr[0]);
+
 void printArray(int* arr, int arrSize) {
     for (int i = 0; i < arrSize; i++)
         cout << arr[i] << " ";

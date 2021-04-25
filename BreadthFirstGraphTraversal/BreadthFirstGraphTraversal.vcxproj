@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bf331209-142f-4b0e-b97e-4460d630d2bb}</ProjectGuid>
-    <RootNamespace>AdditionalFiles</RootNamespace>
+    <ProjectGuid>{c140fa31-4c65-4596-81a5-0279b168f850}</ProjectGuid>
+    <RootNamespace>BreadthFirstGraphTraversal</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)AdditionalFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,12 +140,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AuxiliaryFunctions.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="QuickSort.h" />
+    <ClCompile Include="..\AdditionalFiles\Graph.cpp" />
+    <ClCompile Include="BreadthFirstGraphTraversal.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Graph.cpp" />
+    <ClInclude Include="..\AdditionalFiles\Graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

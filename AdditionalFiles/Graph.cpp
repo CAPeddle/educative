@@ -53,6 +53,8 @@ void Graph::breadthFirstTraversal(int source)
 
     breadthFirstUtilityFunction(queue, visited);
     delete[] visited;
+
+    cout << "\n";
 }
 
 void Graph::breadthFirstTraversalIterative(int source) {
@@ -76,6 +78,7 @@ void Graph::breadthFirstTraversalIterative(int source) {
             }
         }
     }
+    cout << "\n";
 }
 
 void Graph::depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>& _visited) {
@@ -130,3 +133,33 @@ void Graph::depthFirstTraversal(int source) {
     cout << "\n";
 }
 
+int Graph::numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited) {
+
+    int levelCount{ 0 };
+    
+    if (level == 1) {
+        return 1;
+    }
+    --level;
+
+
+    for (auto i = adjacencyList[_source].begin(); i != adjacencyList[_source].end(); ++i) {
+        auto targetNode = *i;
+        if (!_visited[*i]) {
+            _visited[*i] = true;            
+            levelCount += numberOfNodesInGivenLevelUtilityFunction(level, *i, _visited);            
+        }
+    }
+
+    return levelCount;
+}
+
+int Graph::numberOfNodesInGivenLevel(int level) {
+    int count = 0;
+    vector < bool > visited(this->vertices, false);
+    // write code here	
+
+    //hop down stack to get one level onwards, recursive will work will for this
+    std::cout << numberOfNodesInGivenLevelUtilityFunction(level, 0, visited) << "\n";
+    return count;
+}

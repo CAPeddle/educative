@@ -30,6 +30,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BreadthFirstGraphTraversal"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DepthFirstTraversal", "DepthFirstTraversal\DepthFirstTraversal.vcxproj", "{A685D9D4-6D5E-41FC-BBA5-15091A846715}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodesOnLevel", "NodesOnLevel\NodesOnLevel.vcxproj", "{1FCF5346-9BCB-470D-B963-6E58ED95E453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -134,6 +136,14 @@ Global
 		{A685D9D4-6D5E-41FC-BBA5-15091A846715}.Release|x64.Build.0 = Release|x64
 		{A685D9D4-6D5E-41FC-BBA5-15091A846715}.Release|x86.ActiveCfg = Release|Win32
 		{A685D9D4-6D5E-41FC-BBA5-15091A846715}.Release|x86.Build.0 = Release|Win32
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Debug|x64.ActiveCfg = Debug|x64
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Debug|x64.Build.0 = Debug|x64
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Debug|x86.ActiveCfg = Debug|Win32
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Debug|x86.Build.0 = Debug|Win32
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Release|x64.ActiveCfg = Release|x64
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Release|x64.Build.0 = Release|x64
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Release|x86.ActiveCfg = Release|Win32
+		{1FCF5346-9BCB-470D-B963-6E58ED95E453}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

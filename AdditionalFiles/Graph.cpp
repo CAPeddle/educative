@@ -22,6 +22,18 @@ void Graph::addEdge(int v, int w)
 	}
 }
 
+
+void Graph::printGraph() {
+    for (int v = 0; v < vertices; v++) {
+        cout << v << "-->";
+        list < int > ::iterator i;
+        for (i = adjacencyList[v].begin(); i != adjacencyList[v].end(); ++i) {
+            cout << *i << " ";
+        }
+        cout << endl;
+    }
+}
+
 void Graph::breadthFirstUtilityFunction(list <int>& queue, bool* visited) {
     list <int> ::iterator i;
     while (!queue.empty()) {
@@ -162,4 +174,18 @@ int Graph::numberOfNodesInGivenLevel(int level) {
     //hop down stack to get one level onwards, recursive will work will for this
     std::cout << numberOfNodesInGivenLevelUtilityFunction(level, 0, visited) << "\n";
     return count;
+}
+
+Graph Graph::getTranspose() {
+    // write your code here
+    auto temp = Graph(this->vertices) ;
+
+    for (int v = 0; v < vertices; v++) {
+        list < int > ::iterator i;
+        for (i = adjacencyList[v].begin(); i != adjacencyList[v].end(); ++i) {
+            temp.addEdge(*i, v);
+        }
+    }
+
+    return temp;
 }

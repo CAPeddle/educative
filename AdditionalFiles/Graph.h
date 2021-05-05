@@ -13,6 +13,8 @@ public:
     Graph();
     Graph(int V);
     void addEdge(int v, int w);
+    void printGraph();
+    Graph getTranspose();
     void breadthFirstTraversal(int source);
     void breadthFirstTraversalIterative(int source);
     void depthFirstTraversal(int source);

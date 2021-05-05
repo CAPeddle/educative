@@ -52,6 +52,17 @@ void printArray(int* arr, int arrSize) {
     cout << endl;
 }
 
+template<typename T>
+void printContainer(T theContainer)
+{
+    for (auto it = theContainer.begin(); it != theContainer.end(); ++it) {
+        if ((it + 1) != theContainer.end())
+            std::cout << *it << ':';
+        else
+            std::cout << *it;
+    }
+}
+
 inline void printVector(const std::vector<int>& _vector) {
     for (auto i = _vector.begin(); i != _vector.end(); i++)
         std::cout << *i << ' ';

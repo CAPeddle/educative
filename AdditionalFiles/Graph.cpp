@@ -1,4 +1,6 @@
 #include "Graph.h"
+#include "AuxiliaryFunctions.h"
+
 #include <iostream>
 #include <queue>
 #include <stack>
@@ -115,19 +117,6 @@ void Graph::depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>
         depthFirstUtilityFunction(_stack, _visited);
         std::sort(_stack.begin(), _stack.end());
     }
-
- /*
-    auto currentStackFront = _stack.front();
-    _stack.pop_front();
-    depthFirstUtilityFunction(currentStackFront, _stack, _visited);
-
- depthFirstUtilityFunction(source, _stack, _visited);
-    auto currentStackFront = _stack.front();
-    if (currentStackFront <= source) {
-        _stack.pop_front();
-        depthFirstUtilityFunction(currentStackFront, _stack, _visited);
-    }*/
-
 }
 
 void Graph::depthFirstTraversal(int source) {
@@ -188,4 +177,33 @@ Graph Graph::getTranspose() {
     }
 
     return temp;
+}
+
+void Graph::printAllPathsUtilityFunction(const int& _vertex, const int& _destination, std::deque<int> _path) {
+
+    _path.push_back(_vertex);
+
+    if (_vertex == _destination)
+    {
+        printContainer(_path);
+        std::cout << "\n";
+        return;
+    }
+
+    if (adjacencyList[_vertex].empty()) {
+        return;
+    }
+
+    for (auto i = adjacencyList[_vertex].begin(); i != adjacencyList[_vertex].end(); ++i) {
+        auto iValue = *i;
+        printAllPathsUtilityFunction(iValue, _destination, _path);
+    }
+}
+
+void Graph::printAllPaths(int source, int destination) {    
+
+    std::deque<int> path;
+    printAllPathsUtilityFunction(source, destination, path);
+
+    cout << "\n";
 }

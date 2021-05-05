@@ -14,6 +14,7 @@ public:
     Graph(int V);
     void addEdge(int v, int w);
     void printGraph();
+    void printAllPaths(int source, int destination);
     Graph getTranspose();
     void breadthFirstTraversal(int source);
     void breadthFirstTraversalIterative(int source);
@@ -23,6 +24,7 @@ public:
 private:
     int numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited);
     void breadthFirstUtilityFunction(list <int>& queue, bool* visited);
-    void depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>& _visited);
+    void depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>& _visited);    
+    void printAllPathsUtilityFunction(const int& _vertex, const int& _destination, std::deque<int> _path);
 };
 

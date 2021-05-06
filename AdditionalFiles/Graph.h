@@ -18,9 +18,10 @@ public:
     Graph getTranspose();
     void breadthFirstTraversal(int source);
     void breadthFirstTraversalIterative(int source);
-    void depthFirstTraversal(int source);
+    void depthFirstTraversal(int source, std::vector<bool>& _visited);
     int numberOfNodesInGivenLevel(int level);
-    
+    bool isStronglyConnected();
+
 private:
     int numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited);
     void breadthFirstUtilityFunction(list <int>& queue, bool* visited);

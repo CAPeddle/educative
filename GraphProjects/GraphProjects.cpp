@@ -16,9 +16,21 @@ int main()
     k.addEdge(5, 6);
     k.addEdge(3, 6);
 
+    k.printGraph();
+    std::cout << "Is strongly connected: " << k.isStronglyConnected() << "\n\n";
 
-    k.printAllPaths(0,6);
 
+    Graph j(7);
+    j.addEdge(0, 1);
+    j.addEdge(1, 2);
+    j.addEdge(2, 3);
+    j.addEdge(3, 4);
+    j.addEdge(4, 5);
+    j.addEdge(5, 6);
+    
+    j.printGraph();
+    j.isStronglyConnected();
+    std::cout << "Is strongly connected: " << k.isStronglyConnected() << "\n\n";
 
 
 }

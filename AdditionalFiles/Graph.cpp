@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <queue>
-#include <stack>
 
 Graph::Graph() {
 	this->vertices = 0;
@@ -119,17 +118,14 @@ void Graph::depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>
     }
 }
 
-void Graph::depthFirstTraversal(int source) {
-    // write code here
+void Graph::depthFirstTraversal(int source, std::vector<bool>& _visited) {
+  
+    _visited.resize(this->vertices);
+    
+    std::fill(_visited.begin(), _visited.end(), false);
 
-    //start at source
-    //get the list of connected nodes/edges
-    //process the first listed node  - > add to queue for later processing 
-    //process that nodes/list, it's first listed 
-
-    vector < bool > visited(this->vertices, false);
     std::deque<int> stack{ source };
-    depthFirstUtilityFunction(stack, visited);
+    depthFirstUtilityFunction(stack, _visited);
 
     cout << "\n";
 }
@@ -206,4 +202,26 @@ void Graph::printAllPaths(int source, int destination) {
     printAllPathsUtilityFunction(source, destination, path);
 
     cout << "\n";
+}
+
+bool Graph::isStronglyConnected() {
+    //write your code here
+
+    int start = this->vertices / 2;
+    std::vector<bool> visited;
+    depthFirstTraversal(start, visited);
+
+    auto findFalse = visited.begin();
+    findFalse = std::find(std::begin(visited), std::end(visited), false);
+
+    if (findFalse != visited.end()) return false;
+
+    auto k = this->getTranspose();
+
+    k.depthFirstTraversal(start, visited);
+    findFalse = std::find(std::begin(visited), std::end(visited), false);
+   
+    if (findFalse != visited.end()) return false;
+
+    return true;
 }

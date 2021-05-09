@@ -6,18 +6,24 @@
 
 int main()
 {
-    Graph k(7, false);
-    k.addEdge(0, 1);
-    k.addEdge(1, 2);
-    k.addEdge(3, 4);
-    k.addEdge(5, 3);
-    k.addEdge(5, 6);
-    k.addEdge(3, 6);
+    Graph g(5, false);
+    g.addEdge(0, 1);
+    g.addEdge(1, 2);
+    g.addEdge(2, 3);
+    g.addEdge(3, 4);
+    g.addEdge(0, 4);
 
-    //k.printGraph();
-    k.printConnectedComponents();
+    // remove edge 3 -> 4
+    if (g.willCauseSeparateComponents(3, 4))
+        cout << "Yes, separate components created due to deletion of edge 3 -> 4" << endl;
+    else
+        cout << "No, separate components not created due to deletion of edge 3 -> 4" << endl;
 
-    //printContainer(visited);
+    // remove edge 1 -> 2
+    if (g.willCauseSeparateComponents(1, 2))
+        cout << "Yes, separate components created due to deletion of edge 1 -> 2" << endl;
+    else
+        cout << "No, separate components not created due to deletion of edge 1 -> 2" << endl;
 
 
 }

@@ -9,6 +9,20 @@ Graph::Graph() {
     adjacencyList = new list<int>[0];
 }
 
+Graph::Graph(const Graph& g)
+{
+    directed = g.directed;
+    vertices = g.vertices;
+    adjacencyList = new list<int>[g.vertices];
+
+    for (int v = 0; v < g.vertices; ++v) {
+        for (auto i = g.adjacencyList[v].begin(); i != g.adjacencyList[v].end(); ++i) {
+            auto iValue = *i;
+            adjacencyList[v].push_back(iValue);
+        }
+    }
+}
+
 Graph::Graph(int V = 0, bool _directed):
     vertices(V), directed(_directed)
 {
@@ -25,6 +39,21 @@ void Graph::addEdge(int v, int w)
 	}
 }
 
+void Graph::removeEdge(int v, int w) {
+    if (v < vertices && w < vertices) {
+
+        auto findVertex = adjacencyList[v].begin();
+        findVertex = std::find(std::begin(adjacencyList[v]), std::end(adjacencyList[v]), w);
+        if (findVertex != adjacencyList[v].end()) adjacencyList[v].erase(findVertex);
+
+
+        if (!directed) {
+            findVertex = adjacencyList[w].begin();
+            findVertex = std::find(std::begin(adjacencyList[w]), std::end(adjacencyList[w]), v);
+            if (findVertex != adjacencyList[w].end()) adjacencyList[w].erase(findVertex);
+        }
+    }
+}
 
 void Graph::printGraph() {
     for (int v = 0; v < vertices; v++) {
@@ -122,14 +151,19 @@ void Graph::depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>
 
 void Graph::depthFirstTraversal(int source, std::vector<bool>& _visited) {
   /*
-    _visited.resize(this->vertices);
-    
-    std::fill(_visited.begin(), _visited.end(), false);*/
+    _visited.resize(this->vertices);    
+    std::fill(_visited.begin(), _visited.end(), false);
 
     std::deque<int> stack{ source };
-    depthFirstUtilityFunction(stack, _visited);
+    depthFirstUtilityFunction(stack, _visited);*/
 
-    cout << "\n";
+    _visited[source] = true;
+
+    list < int > ::iterator i;
+    for (i = adjacencyList[source].begin(); i != adjacencyList[source].end(); ++i)
+        if (!_visited[*i])
+            depthFirstTraversal(*i, _visited);
+
 }
 
 int Graph::numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited) {
@@ -141,7 +175,6 @@ int Graph::numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std:
     }
     --level;
 
-
     for (auto i = adjacencyList[_source].begin(); i != adjacencyList[_source].end(); ++i) {
         auto targetNode = *i;
         if (!_visited[*i]) {
@@ -151,6 +184,17 @@ int Graph::numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std:
     }
 
     return levelCount;
+}
+
+bool Graph::willCauseSeparateComponents(int source, int destination) {
+
+    Graph changed(*this);
+
+    if (!changed.isConnected()) return true;
+
+    changed.removeEdge(source, destination);
+  
+    return (!changed.isConnected());
 }
 
 int Graph::numberOfNodesInGivenLevel(int level) {
@@ -165,7 +209,7 @@ int Graph::numberOfNodesInGivenLevel(int level) {
 
 Graph Graph::getTranspose() {
     // write your code here
-    auto temp = Graph(this->vertices) ;
+    auto temp = Graph(this->vertices, true) ;
 
     for (int v = 0; v < vertices; v++) {
         list < int > ::iterator i;
@@ -206,11 +250,31 @@ void Graph::printAllPaths(int source, int destination) {
     cout << "\n";
 }
 
+bool Graph::isConnected() {
+
+    std::vector<bool> visited;
+    visited.resize(this->vertices);
+    std::fill(visited.begin(), visited.end(), false);
+
+    depthFirstTraversal(0, visited);
+
+    auto findFalse = visited.begin();
+    findFalse = std::find(std::begin(visited), std::end(visited), false);
+
+    if (findFalse != visited.end()) return false;
+
+    return true;
+}
+
 bool Graph::isStronglyConnected() {
     //write your code here
 
     int start = this->vertices / 2;
-    std::vector<bool> visited;
+
+    std::vector<bool> visited;    
+    visited.resize(this->vertices);
+    std::fill(visited.begin(), visited.end(), false);
+
     depthFirstTraversal(start, visited);
 
     auto findFalse = visited.begin();

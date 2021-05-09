@@ -12,6 +12,7 @@ class Graph {
 
 public:
     Graph();
+    Graph(const Graph& g);
     Graph(int V, bool _directed=true);
     void addEdge(int v, int w);
     void printGraph();
@@ -21,13 +22,16 @@ public:
     void breadthFirstTraversalIterative(int source);
     void depthFirstTraversal(int source, std::vector<bool>& _visited);
     int numberOfNodesInGivenLevel(int level);
+    bool isConnected();
     bool isStronglyConnected();
     void printConnectedComponents();
+    bool willCauseSeparateComponents(int source, int destination);
 
 private:
     int numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited);
     void breadthFirstUtilityFunction(list <int>& queue, bool* visited);
     void depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>& _visited);    
     void printAllPathsUtilityFunction(const int& _vertex, const int& _destination, std::deque<int> _path);
+    void removeEdge(int v, int w);
 };
 

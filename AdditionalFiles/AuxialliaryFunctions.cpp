@@ -1,10 +1,5 @@
 #include "AuxiliaryFunctions.h"
 
-void printArray(int* arr, int arrSize) {
-    for (int i = 0; i < arrSize; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-}
 
 void printVector(const std::vector<int>& _vector) {
     for (std::vector<char>::const_iterator i = _vector.begin(); i != _vector.end(); ++i)

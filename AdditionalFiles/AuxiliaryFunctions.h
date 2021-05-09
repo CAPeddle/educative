@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SOME_UNIQUE_NAME_HERE
+#define SOME_UNIQUE_NAME_HERE
+
 #include <iostream>
 #include <vector>
 
@@ -146,3 +148,5 @@ inline int findMax(int* arr, int start, int end) {
     }
     return maxInd;
 }
+
+#endif

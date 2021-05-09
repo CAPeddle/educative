@@ -6,12 +6,13 @@
 using namespace std;
 
 class Graph {
+    bool directed{ true };
     int vertices;
     list<int>* adjacencyList;
 
 public:
     Graph();
-    Graph(int V);
+    Graph(int V, bool _directed=true);
     void addEdge(int v, int w);
     void printGraph();
     void printAllPaths(int source, int destination);
@@ -21,6 +22,7 @@ public:
     void depthFirstTraversal(int source, std::vector<bool>& _visited);
     int numberOfNodesInGivenLevel(int level);
     bool isStronglyConnected();
+    void printConnectedComponents();
 
 private:
     int numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited);

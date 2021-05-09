@@ -6,11 +6,12 @@
 
 Graph::Graph() {
 	this->vertices = 0;
+    adjacencyList = new list<int>[0];
 }
 
-Graph::Graph(int V = 0)
+Graph::Graph(int V = 0, bool _directed):
+    vertices(V), directed(_directed)
 {
-	this->vertices = V;
 	adjacencyList = new list<int>[V];
 }
 
@@ -18,7 +19,8 @@ void Graph::addEdge(int v, int w)
 {
 	if (v < vertices && w < vertices) {
 		adjacencyList[v].push_back(w);
-		//adjacencyList[w].push_back(v); only for undirected graph
+        if (!directed) 
+            adjacencyList[w].push_back(v); 
 		//where reverse also allowed
 	}
 }
@@ -108,7 +110,7 @@ void Graph::depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>
 
     for (auto i = adjacencyList[currentStackFront].begin(); i != adjacencyList[currentStackFront].end(); ++i) {
         auto iValue = *i;
-        _stack.push_front(iValue);     //insertng midway might be more efficient depending on algo        
+        if (!_visited[iValue]) _stack.push_front(iValue);     //insertng midway might be more efficient depending on algo        
     }
 
     while (!_stack.empty())
@@ -119,10 +121,10 @@ void Graph::depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>
 }
 
 void Graph::depthFirstTraversal(int source, std::vector<bool>& _visited) {
-  
+  /*
     _visited.resize(this->vertices);
     
-    std::fill(_visited.begin(), _visited.end(), false);
+    std::fill(_visited.begin(), _visited.end(), false);*/
 
     std::deque<int> stack{ source };
     depthFirstUtilityFunction(stack, _visited);
@@ -224,4 +226,21 @@ bool Graph::isStronglyConnected() {
     if (findFalse != visited.end()) return false;
 
     return true;
+}
+
+void Graph::printConnectedComponents() {
+    //write your code here
+
+    std::vector<bool> visited;
+    visited.resize(this->vertices);
+    std::fill(visited.begin(), visited.end(), false);
+ 
+    auto findFalse = visited.begin();
+    while (findFalse != visited.end()) {
+        int index = findFalse - visited.begin();
+        depthFirstTraversal(index, visited);
+
+        findFalse = std::find(std::begin(visited), std::end(visited), false);
+    }   
+
 }

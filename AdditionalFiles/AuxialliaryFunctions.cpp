@@ -1,6 +1,6 @@
 #include "AuxiliaryFunctions.h"
 
-
+/*
 void printVector(const std::vector<int>& _vector) {
     for (std::vector<char>::const_iterator i = _vector.begin(); i != _vector.end(); ++i)
         std::cout << *i << ' ';
@@ -29,3 +29,4 @@ int findMax(int* arr, int start, int end) {
     }
     return maxInd;
 }
+*/

@@ -159,14 +159,15 @@ void Graph::depthFirstTraversal(int source, std::vector<bool>& _visited) {
 
     _visited[source] = true;
 
-    list < int > ::iterator i;
-    for (i = adjacencyList[source].begin(); i != adjacencyList[source].end(); ++i)
-        if (!_visited[*i])
-            depthFirstTraversal(*i, _visited);
-
+  for (auto i = adjacencyList[source].begin(); i != adjacencyList[source].end(); ++i) {
+      if (!_visited[*i]) {
+        depthFirstTraversal(*i, _visited);
+      }
+    }
 }
 
-int Graph::numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited) {
+int Graph::numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited) const
+{
 
     int levelCount{ 0 };
     
@@ -308,3 +309,76 @@ void Graph::printConnectedComponents() {
     }   
 
 }
+
+bool Graph::isBipartiteUtilityFunction(int v, vector<bool>& visited, vector<int>& color) const
+{
+  for (auto i = adjacencyList[v].begin(); i != adjacencyList[v].end(); ++i) {
+    if (visited[*i] == false) {
+      visited[*i] = true;
+
+      color[*i] = !color[v]; // give different color to adjacent node
+
+      if (this->isBipartiteUtilityFunction(*i, visited, color) == false) // recursion
+        return false;
+    }
+    else if (color[*i] == color[v]) // if same color of adjacent node
+                                      // then graph is not bipartite
+      return false;
+  }
+  return true;
+}
+
+bool Graph::isBipartite(int source) const
+{
+  vector<bool> visited(this->vertices);
+  vector<int> color(this->vertices);
+
+  visited[source] = true;
+  color[source] = 0;
+
+  if (this->isBipartiteUtilityFunction(source, visited, color)) {
+    return true;
+  }
+  return false;
+}
+
+void Graph::topologicalSortUtility(int source, std::vector<bool>& _visited, std::vector<int>& _stack) {
+
+  _visited[source] = true;
+
+
+  for (auto i = adjacencyList[source].begin(); i != adjacencyList[source].end(); ++i) {
+    if (!_visited[*i]) {
+      topologicalSortUtility(*i, _visited,_stack);
+    }
+  }
+}
+
+void Graph::topologicalSort() {
+  
+  vector < bool > visited(this->vertices, false);
+  vector < int > stack;
+
+  topologicalSortUtility(0, visited, stack);
+
+
+
+  for (auto v = 0; v < vertices; ++v)
+  {
+    for (auto i = adjacencyList[v].begin(); i != adjacencyList[v].end(); ++i) {
+      if (visited[*i] == true)
+      {
+
+        auto findFalse = visited.begin();
+        findFalse = std::find(std::begin(visited), std::end(visited), false);
+
+
+        stack.insert() 
+      }
+    }
+  }
+
+
+  cout << " ";
+}
+

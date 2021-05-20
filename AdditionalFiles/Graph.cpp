@@ -373,7 +373,7 @@ void Graph::topologicalSort() {
         findFalse = std::find(std::begin(visited), std::end(visited), false);
 
 
-        stack.insert() 
+        //stack.insert() 
       }
     }
   }

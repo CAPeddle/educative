@@ -140,11 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AuxiliaryFunctions.h" />
+    <ClInclude Include="DisjointSets.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="WeightedGraph.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DisjointSets.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="WeightedGraph.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

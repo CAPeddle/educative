@@ -140,11 +140,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\AdditionalFiles\Graph.cpp" />
+    <ClCompile Include="..\AdditionalFiles\DisjointSets.cpp" />
+    <ClCompile Include="..\AdditionalFiles\WeightedGraph.cpp" />
     <ClCompile Include="GraphProjects.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\AdditionalFiles\DisjointSets.h" />
     <ClInclude Include="..\AdditionalFiles\Graph.h" />
+    <ClInclude Include="..\AdditionalFiles\WeightedGraph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

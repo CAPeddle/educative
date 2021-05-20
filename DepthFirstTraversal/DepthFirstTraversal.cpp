@@ -14,7 +14,10 @@ int main()
     g.addEdge(3, 4);
     g.addEdge(3, 5);
 
-    g.depthFirstTraversal(0);
+    std::vector<bool> visited;
+    visited.resize(6);
+    std::fill(visited.begin(), visited.end(), false);
+    g.depthFirstTraversal(0, visited);
 
     Graph h(8);
 
@@ -30,7 +33,9 @@ int main()
     h.addEdge(3, 5);
     h.addEdge(5, 6);
     
-    h.depthFirstTraversal(0);
+    visited.resize(8);
+    std::fill(visited.begin(), visited.end(), false);
+    h.depthFirstTraversal(0, visited);
 
 }
 

@@ -150,8 +150,9 @@ void Graph::depthFirstUtilityFunction(std::deque<int>& _stack, std::vector<bool>
 }
 
 void Graph::depthFirstTraversal(int source, std::vector<bool>& _visited) {
-  /*
-    _visited.resize(this->vertices);    
+  
+    /*
+    _visited.resize(this->vertices);
     std::fill(_visited.begin(), _visited.end(), false);
 
     std::deque<int> stack{ source };
@@ -168,7 +169,6 @@ void Graph::depthFirstTraversal(int source, std::vector<bool>& _visited) {
 
 int Graph::numberOfNodesInGivenLevelUtilityFunction(int level, int _source, std::vector<bool>& _visited) const
 {
-
     int levelCount{ 0 };
     
     if (level == 1) {
@@ -307,7 +307,6 @@ void Graph::printConnectedComponents() {
 
         findFalse = std::find(std::begin(visited), std::end(visited), false);
     }   
-
 }
 
 bool Graph::isBipartiteUtilityFunction(int v, vector<bool>& visited, vector<int>& color) const
@@ -342,43 +341,70 @@ bool Graph::isBipartite(int source) const
   return false;
 }
 
-void Graph::topologicalSortUtility(int source, std::vector<bool>& _visited, std::vector<int>& _stack) {
+void Graph::topologicalSortUtility(int v, vector<bool>& _visited, std::stack<int>& myStack) {
+    _visited[v] = true;
+    std::list<int>::iterator i;
+    for (i = adjacencyList[v].begin(); i != adjacencyList[v].end(); ++i)
+        if (!_visited[*i])
+            topologicalSortUtility(*i, _visited, myStack);
 
-  _visited[source] = true;
-
-
-  for (auto i = adjacencyList[source].begin(); i != adjacencyList[source].end(); ++i) {
-    if (!_visited[*i]) {
-      topologicalSortUtility(*i, _visited,_stack);
-    }
-  }
+    myStack.push(v);
 }
 
 void Graph::topologicalSort() {
-  
-  vector < bool > visited(this->vertices, false);
-  vector < int > stack;
+    std::vector<bool> visited(this->vertices, false);
 
-  topologicalSortUtility(0, visited, stack);
+    std::stack<int> myStack;
+    for (int i = 0; i < this->vertices; i++)
+        if (visited[i] == false)
+            topologicalSortUtility(i, visited, myStack);
 
-
-
-  for (auto v = 0; v < vertices; ++v)
-  {
-    for (auto i = adjacencyList[v].begin(); i != adjacencyList[v].end(); ++i) {
-      if (visited[*i] == true)
-      {
-
-        auto findFalse = visited.begin();
-        findFalse = std::find(std::begin(visited), std::end(visited), false);
-
-
-        stack.insert() 
-      }
+    while (myStack.empty() == false) {
+        cout << myStack.top() << " ";
+        myStack.pop();
     }
-  }
-
-
-  cout << " ";
 }
 
+void Graph::greedyColoring() {
+    int* result = new int[this->vertices];
+
+    // Assign the first color to first vertex 
+    result[0] = 0;
+
+    // Initialize remaining V-1 vertices as unassigned 
+    for (int u = 1; u < this->vertices; u++)
+        result[u] = -1; // no color is assigned to u 
+
+    bool* available = new bool[this->vertices];
+    for (int color = 0; color < this->vertices; color++)
+        available[color] = false;
+
+    // Assign colors to remaining V-1 vertices 
+    for (int u = 1; u < this->vertices; u++) {
+
+        list < int > ::iterator i;
+        for (i = adjacencyList[u].begin(); i != adjacencyList[u].end(); ++i)
+            if (result[*i] != -1)
+                available[result[*i]] = true;
+
+        // Find the first available color 
+        int color;
+        for (color = 0; color < this->vertices; color++)
+            if (available[color] == false)
+                break;
+
+        result[u] = color; // Assign the found color 
+
+        // Reset the values  
+        for (i = adjacencyList[u].begin(); i != adjacencyList[u].end(); ++i)
+            if (result[*i] != -1)
+                available[result[*i]] = false;
+    }
+
+    for (int u = 0; u < this->vertices; u++)
+        cout << "Vertex " << u << " ---> Color " <<
+        result[u] << endl;
+
+    delete[] result;
+    delete[] available;
+}

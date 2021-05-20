@@ -15,31 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QuickSort.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AuxiliaryFunctions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WeightedGraph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DisjointSets.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="GraphColouring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalFiles\Graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Graph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WeightedGraph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DisjointSets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="..\AdditionalFiles\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

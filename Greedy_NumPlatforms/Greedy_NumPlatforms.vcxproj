@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bf331209-142f-4b0e-b97e-4460d630d2bb}</ProjectGuid>
-    <RootNamespace>AdditionalFiles</RootNamespace>
+    <ProjectGuid>{b151737f-3e67-4764-9297-cc40a67c36e6}</ProjectGuid>
+    <RootNamespace>GreedyNumPlatforms</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,16 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AuxiliaryFunctions.h" />
-    <ClInclude Include="DisjointSets.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="QuickSort.h" />
-    <ClInclude Include="WeightedGraph.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="DisjointSets.cpp" />
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="WeightedGraph.cpp" />
+    <ClCompile Include="Greedy_NumPlatforms.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,8 +6,8 @@
 #include <list>
 
 WeightedGraph::WeightedGraph(int V, int E) {
-    this->vertices = V;
-    this->edges = E;
+  this->vertices = V;
+  this->edges = E;
 }
 
 void WeightedGraph::addEdge(int u, int v, int w) {
@@ -15,28 +15,28 @@ void WeightedGraph::addEdge(int u, int v, int w) {
 }
 
 int WeightedGraph::kruskalMST() {
-    int weightOfMST = 0;
+  int weightOfMST = 0;
 
-    // lets first sort all the edges.
+  // lets first sort all the edges.
     std::sort(edgesArray.begin(), edgesArray.end());
 
-    DisjointSets mySetDataStructure(this->vertices);
+  DisjointSets mySetDataStructure(this->vertices);
 
-    std::vector <std::pair <int, myPair>> ::iterator iterator;
-    for (iterator = edgesArray.begin(); iterator != edgesArray.end(); iterator++) {
-        int u = iterator->second.first;
-        int v = iterator->second.second;
+  std::vector <std::pair <int, myPair>> ::iterator iterator;
+  for (iterator = edgesArray.begin(); iterator != edgesArray.end(); iterator++) {
+    int u = iterator->second.first;
+    int v = iterator->second.second;
 
-        int set_u = mySetDataStructure.find(u);
-        int set_v = mySetDataStructure.find(v);
+    int set_u = mySetDataStructure.find(u);
+    int set_v = mySetDataStructure.find(v);
 
-        if (set_u != set_v) {
-            std::cout << u << " -- " << v << std::endl;
-            weightOfMST += iterator->first;
-            mySetDataStructure.merge(set_u, set_v);
-        }
+    if (set_u != set_v) {
+      std::cout << u << " -- " << v << std::endl;
+      weightOfMST += iterator->first;
+      mySetDataStructure.merge(set_u, set_v);
     }
-    return weightOfMST;
+  }
+  return weightOfMST;
 }
 
 

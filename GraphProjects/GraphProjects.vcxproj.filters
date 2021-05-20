@@ -18,12 +18,21 @@
     <ClCompile Include="GraphProjects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\AdditionalFiles\Graph.cpp">
+    <ClCompile Include="..\AdditionalFiles\DisjointSets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalFiles\WeightedGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\AdditionalFiles\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AdditionalFiles\DisjointSets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AdditionalFiles\WeightedGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,7 +12,6 @@ void findMinCoins(int V) {
   // write your code here
   std::vector<int> coinsUsed;
 
-
   int coinsIndex = 3;
   while (V>0 && coinsIndex >= 0)
   {

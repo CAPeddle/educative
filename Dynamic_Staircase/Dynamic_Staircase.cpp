@@ -52,13 +52,10 @@ unsigned long countWaysTabul(long n) {
 
 long main()
 {
-    const constexpr long steps = 40;
-
-    std::chrono::time_point<std::chrono::steady_clock> start_start = std::chrono::steady_clock::now();
-
+    const constexpr long steps = 4;
+      
 
     std::chrono::time_point<std::chrono::steady_clock> start = std::chrono::steady_clock::now();
-    std::cout << "Recurring Start at: [" << std::chrono::duration_cast<std::chrono::seconds>(start - start_start).count() << " s] " << "\n";
     auto countRecurring = countWaysRecurring(steps);
     std::chrono::time_point<std::chrono::steady_clock> end = std::chrono::steady_clock::now();
     std::cout << "Recurring: " << countRecurring << "[" << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << " s] " << "\n";

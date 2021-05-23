@@ -3,8 +3,10 @@
 //
 
 #include <iostream>
+#include <chrono>
+#include <vector>
 
-int countWaysRecurring(int n) {
+unsigned long countWaysRecurring(long n) {
     if (n < 0)
         return 0;
     else if (n == 0)
@@ -13,31 +15,62 @@ int countWaysRecurring(int n) {
         return countWaysRecurring(n - 1) + countWaysRecurring(n - 2) + countWaysRecurring(n - 3);
 }
 
-int countWays(int n) {
-    // Write your code here
-    //remaining steps
+long countWaysMemoUtility(long n, std::vector<unsigned long> lookupTable) {
+    if (n < 0) // negative staircases i.e., invalid input
+        return 0;
+    else if (n == 0) // if 0 staircases
+        return 1;
+    else if (lookupTable[n] > -1) // if already present in the table
+        return lookupTable[n];
+    else
+        lookupTable[n] = countWaysMemoUtility(n - 1, lookupTable) + countWaysMemoUtility(n - 2, lookupTable) + countWaysMemoUtility(n - 3, lookupTable);
+    return lookupTable[n];
+}
 
-    int* lookupTable = new int[n + 1];
-    for (int i = 0; i < n + 1; i++)
-        lookupTable[i] = 0;
+unsigned long countWaysMemoization(long n) {
 
-    delete[] lookupTable;
-    return -1;
+    if (n == 1) return 1;
+    if (n == 2) return 2;
+    if (n == 3) return 3;
+
+    std::vector<unsigned long> lookupTable(n + 1, -1);
+    return countWaysMemoUtility(n, lookupTable);
 }
 
 
-int main()
+unsigned long countWaysTabul(long n) {
+    unsigned long* lookupTable = new unsigned long[n + 1];
+    lookupTable[0] = 1; // Setting the first three values
+    lookupTable[1] = 1;
+    lookupTable[2] = 2;
+
+    for (long i = 3; i <= n; i++)
+        lookupTable[i] = lookupTable[i - 1] + lookupTable[i - 2] + lookupTable[i - 3]; // Fill up the table by summing up previous two values
+
+    return lookupTable[n]; // Return the nth Fibonacci number
+}
+
+long main()
 {
-    std::cout << "Recurring: " << countWaysRecurring(4) << "\n";
+    const constexpr long steps = 40;
+
+    std::chrono::time_point<std::chrono::steady_clock> start_start = std::chrono::steady_clock::now();
+
+
+    std::chrono::time_point<std::chrono::steady_clock> start = std::chrono::steady_clock::now();
+    std::cout << "Recurring Start at: [" << std::chrono::duration_cast<std::chrono::seconds>(start - start_start).count() << " s] " << "\n";
+    auto countRecurring = countWaysRecurring(steps);
+    std::chrono::time_point<std::chrono::steady_clock> end = std::chrono::steady_clock::now();
+    std::cout << "Recurring: " << countRecurring << "[" << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << " s] " << "\n";
+
+    start = std::chrono::steady_clock::now();
+    auto countDynamicMemo = countWaysMemoization(steps);
+    end = std::chrono::steady_clock::now();
+    std::cout << "Dynamic Memo : " << countDynamicMemo << "[" << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << " s] " << "\n";
+
+    start = std::chrono::steady_clock::now();
+    auto countDynamicTab = countWaysMemoization(steps);
+    end = std::chrono::steady_clock::now();
+    std::cout << "Dynamic Tab: " << countDynamicTab << "[" << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << " s] " << "\n";
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

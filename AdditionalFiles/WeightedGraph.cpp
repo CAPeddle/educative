@@ -53,7 +53,7 @@ void WeightedGraph::shortestPath(int source) {
     //push the source first because source has 0 distance with itself
     myPriorityQueue.push(std::make_pair(0, source));
     distanceArray[source] = 0;
-
+    /*
     // now start iterating the queue.
     while (!myPriorityQueue.empty()) {
         int u = myPriorityQueue.top().second;
@@ -74,9 +74,12 @@ void WeightedGraph::shortestPath(int source) {
         }
     }
 
+  */
     for (int i = 0; i < vertices; ++i)
         if (i == vertices - 1)
             std::cout << i << " --> " << distanceArray[i];
         else
             std::cout << i << " --> " << distanceArray[i] << ", ";
+
+
 }

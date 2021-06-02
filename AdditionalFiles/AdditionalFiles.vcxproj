@@ -142,6 +142,7 @@
     <ClInclude Include="AuxiliaryFunctions.h" />
     <ClInclude Include="DisjointSets.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="QuickSort.h" />
     <ClInclude Include="WeightedGraph.h" />

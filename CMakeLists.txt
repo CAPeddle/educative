@@ -18,4 +18,4 @@ ExternalProject_Add(googletest
 )
 
 # Include sub-projects.
-add_subdirectory ("TwoPointers")
+add_subdirectory ("FastSlowPointers")

@@ -7,7 +7,7 @@ cmake_minimum_required (VERSION 3.14)
 project(LinkedListCycle)
 
 # Add source to this project's executable.
-add_executable (LinkedListCycle "LinkedListCycle.cpp" "LinkedListCycle.cpp" "LinkedListNode.cpp")
+add_executable (LinkedListCycle  "LinkedListCycle.cpp" "LinkedListCycle.cpp" "LinkedListNode.cpp" )
 
 # Add the test subdirectory
 # add_subdirectory(tests)

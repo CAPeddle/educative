@@ -1,10 +1,10 @@
+#pragma once
 struct EduLinkedListNode {
-  int data;
-  EduLinkedListNode* next;
-  EduLinkedListNode* arbitrary_pointer;
-  EduLinkedListNode(int d) {
-    data = d;
-    next = nullptr;
-    arbitrary_pointer = nullptr;
-  }
+	int data;
+	EduLinkedListNode * next;
+	// LinkedListNode() will be used to make a LinkedListNode type object.
+	EduLinkedListNode(int d) {
+		data = d;
+		next = nullptr;
+	}
 };

@@ -7,7 +7,7 @@ int SumOfSquaredDigits(int number) {
   int totalSum = 0;
   while (number > 0) {
     int digit = number % 10;
-    number = std::floor(number / 10);
+    number = number / 10;
     totalSum += digit * digit;
   }
   return totalSum;

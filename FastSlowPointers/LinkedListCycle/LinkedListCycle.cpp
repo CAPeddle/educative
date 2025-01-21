@@ -3,6 +3,7 @@
 #include "LinkedList.hpp"
 #include "PrintList.cpp"
 #include <iostream>
+#include <cstdint>
 
 bool DetectCycle(EduLinkedListNode* head){
   if(head == NULL){

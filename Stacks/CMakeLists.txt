@@ -7,3 +7,4 @@ project(Stacks)
 
 # Include sub-projects.
 add_subdirectory ("RemoveDuplicates")
+add_subdirectory ("Queue")

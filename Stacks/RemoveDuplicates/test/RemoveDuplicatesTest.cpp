@@ -8,25 +8,22 @@ TEST(RemoveDuplicates, TestName) {
   EXPECT_EQ(1, 1);
   EXPECT_TRUE(true);
 
-  std::vector<std::vector<int>> numsLists = {
+  std::string test("azxxzy");
+  bool result = (StackRemoveDuplicates::RemoveDuplicates(test) == "ay");
+  std::cout << test << result << "palindrome\n";
 
-      {2, 3, 4, 1, 7, 9}, {1, -1, 0}, {2, 4, 2, 7, 6, 3, 1}};
-  std::vector<int> testList = {7, 20, -1, 8};
+  std::string test2("abbaca");
+  EXPECT_EQ(StackRemoveDuplicates::RemoveDuplicates(test2), "ca");
 
-  EXPECT_EQ(RemoveDuplicates::FindSumOfThree(std::vector<int>({1, -1, 0}), -1),
-            false);
-  EXPECT_EQ(
-      RemoveDuplicates::FindSumOfThree(std::vector<int>({3, 7, 1, 2, 8, 4, 5}), 10),
-      true);
-  EXPECT_EQ(
-      RemoveDuplicates::FindSumOfThree(std::vector<int>({-1, 2, 1, -4, 5, -3}), -8),
-      true);
+  std::string test3("aabbcc");
+  EXPECT_EQ(StackRemoveDuplicates::RemoveDuplicates(test3), "");
 
-  EXPECT_EQ(
-      RemoveDuplicates::FindSumOfThree(std::vector<int>({-1, 2, 1, -4, 5, -3}), 7),
-      true);
+  std::string test4("abcde");
+  EXPECT_EQ(StackRemoveDuplicates::RemoveDuplicates(test4), "abcde");
 
-  EXPECT_EQ(
-      RemoveDuplicates::FindSumOfThree(std::vector<int>({3, 7, 1, 2, 8, 4, 5}), 21),
-      false);
+  std::string test5("a");
+  EXPECT_EQ(StackRemoveDuplicates::RemoveDuplicates(test5), "a");
+
+  std::string test6("");
+  EXPECT_EQ(StackRemoveDuplicates::RemoveDuplicates(test6), "");
 }

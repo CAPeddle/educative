@@ -6,8 +6,8 @@
 
 int main()
 {
-    std::string test("kaYak");
-    std::string result = (RemoveDuplicates::IsPalindrome(test) ? "is" : "is not");
+    std::string test("azxxzy");
+    bool result = (StackRemoveDuplicates::RemoveDuplicates(test) == "ay");
     std::cout << test << result << "palindrome\n";
 
 }

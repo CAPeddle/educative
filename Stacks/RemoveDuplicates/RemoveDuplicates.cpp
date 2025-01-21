@@ -5,13 +5,7 @@
 #include <algorithm>
 #include "RemoveDuplicates.h"
 
-std::string RemoveDuplicates(std::string s) {
-    
-    // Replace this placeholder return statement with your code
-    return "";
+
+std::string StackRemoveDuplicates::RemoveDuplicates(std::string s) {
+  return std::string();
 }
-
-
-
-
-

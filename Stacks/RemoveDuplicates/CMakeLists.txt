@@ -7,7 +7,7 @@ cmake_minimum_required (VERSION 3.14)
 project(RemoveDuplicates)
 
 # Add source to this project's executable.
-add_executable (RemoveDuplicates "RemoveDuplicates.cpp" "RemoveDuplicates.h")
+add_executable (RemoveDuplicates "main.cpp" "RemoveDuplicates.cpp" "RemoveDuplicates.h")
 
 # Add the test subdirectory
 add_subdirectory(test)

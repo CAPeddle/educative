@@ -5,9 +5,7 @@
 #include "RemoveDuplicates.h"
 
 TEST(RemoveDuplicates, TestName) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
-
+  
   std::string test("azxxzy");
   bool result = (StackRemoveDuplicates::RemoveDuplicates(test) == "ay");
   std::cout << test << result << "palindrome\n";

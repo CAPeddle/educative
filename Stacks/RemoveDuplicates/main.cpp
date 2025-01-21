@@ -8,7 +8,7 @@ int main()
 {
     std::string test("azxxzy");
     bool result = (StackRemoveDuplicates::RemoveDuplicates(test) == "ay");
-    std::cout << test << result << "palindrome\n";
+    std::cout << test << result << "fail\n";
 
 }
 

@@ -1,30 +1,33 @@
-﻿#include <iostream>
-#include "Stack.h"
+﻿#include "Stack.h"
 
 class MyQueue {
 
+private:
+    Stack stack1;
+    Stack stack2;
+
 public:
     void push(int x) {
+        while (!stack1.isEmpty()) {
+            stack2.push(stack1.pop());
+        }
 
-        // Write your code here
+        stack1.push(x);
 
+        while (!stack2.isEmpty()) {
+            stack1.push(stack2.pop());
+        }
     }
 
     int pop() {
-        
-        // Replace this placeholder return statement with your code
-        return 1;
+        return stack1.pop();
     }
 
     int peek() {
-
-        // Replace this placeholder return statement with your code
-        return 1;
+        return stack1.top();
     }
 
     bool empty() {
-
-        // Replace this placeholder return statement with your code
-        return true;
+        return stack1.isEmpty();
     }
 };

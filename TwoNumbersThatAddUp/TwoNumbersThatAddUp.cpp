@@ -4,8 +4,9 @@
 #include <iostream>
 #include <vector>
 #include<unordered_set>
-#include "QuickSort.h"
-#include "AuxiliaryFunctions.h"
+#include "../AdditionalFiles/QuickSort.h"
+#include "../AdditionalFiles/AuxiliaryFunctions.h"
+
 
 int binarySearch(int s, int arr[], int arrSize) {
   int start = 0;

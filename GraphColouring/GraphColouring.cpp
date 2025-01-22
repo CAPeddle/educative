@@ -1,6 +1,6 @@
 // GraphColouring.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-#include "Graph.h"
+#include "../AdditionalFiles/Graph.h"
 #include <iostream>
 
 int main()

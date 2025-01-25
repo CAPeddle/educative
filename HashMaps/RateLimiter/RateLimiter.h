@@ -6,21 +6,14 @@
 #include <vector>
 
 class RequestLogger {
-    private:
-        std::unordered_map<std::string, int> requests;
-        int timeLimit;
+ private:
+  std::unordered_map<std::string, int> requests;
+  int timeLimit;
 
-    public:
+ public:
+  RequestLogger(int newTimeLimit) : timeLimit(newTimeLimit) {}
 
-    RequestLogger(int newTimeLimit){
-        // Initialize your data structure here
-    }
-    
-    bool MessageRequestDecision(int timestamp, std::string request) {
-        // Replace the placeholder return statement with your code
-        return false;
-    }
+  bool MessageRequestDecision(int timestamp, std::string request);
 };
 
-
-#endif // RATELIMITER_H
+#endif  // RATELIMITER_H

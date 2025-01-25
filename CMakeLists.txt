@@ -21,3 +21,4 @@ include(GoogleTest)
 # Include sub-projects.
 add_subdirectory ("FastSlowPointers")
 add_subdirectory ("Stacks")
+add_subdirectory ("HashMaps")

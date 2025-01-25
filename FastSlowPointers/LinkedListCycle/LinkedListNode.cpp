@@ -1,4 +1,6 @@
-#pragma once
+#ifndef LINKEDLISTNODE_H
+#define LINKEDLISTNODE_H
+
 struct EduLinkedListNode {
 	int data;
 	EduLinkedListNode * next;
@@ -8,3 +10,5 @@ struct EduLinkedListNode {
 		next = nullptr;
 	}
 };
+
+#endif // LINKEDLISTNODE_H

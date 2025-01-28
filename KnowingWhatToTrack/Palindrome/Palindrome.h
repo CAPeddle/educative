@@ -1,5 +1,5 @@
-﻿#ifndef RATELIMITER_H
-#define RATELIMITER_H
+﻿#ifndef PALINDROME_H
+#define PALINDROME_H
 
 #include <iostream>
 #include <unordered_map>
@@ -11,4 +11,4 @@ class Palindrome {
 };
 
 
-#endif  // RATELIMITER_H
+#endif  // PALINDROME_H

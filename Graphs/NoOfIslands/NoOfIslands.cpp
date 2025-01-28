@@ -13,7 +13,6 @@ size_t NoOfIslands::countIslands(std::vector<std::vector<std::string>> matrix) {
     }
 
     for (int column = 0; column < matrix[row].size(); ++column) {
-      // You can modify elements here
       if (matrix[row][column] == "x") {
         NoOfIslands++;
         removeX(matrix, row, column);

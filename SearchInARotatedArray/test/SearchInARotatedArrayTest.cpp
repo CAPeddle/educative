@@ -1,5 +1,34 @@
 #include <gtest/gtest.h>
 #include "SearchInARotatedArray.h"
+#include <climits>
+
+class MinimumInARotatedArrayTest : public ::testing::Test {
+protected:
+    void SetUp() override {}
+    void TearDown() override {}
+};
+
+
+TEST_F(MinimumInARotatedArrayTest, NonRotated) {    
+    std::vector<int> arr1 = {0, 1, 2, 3, 4, 5, 6, 7};
+    EXPECT_EQ(SearchInARotatedArray::min(arr1), 0);      
+}
+
+TEST_F(MinimumInARotatedArrayTest, PivotAtMid) {    
+    std::vector<int> arr1 = {4, 5, 6, 7, 0, 1, 2, 3};
+    EXPECT_EQ(SearchInARotatedArray::min(arr1), 4);  
+}
+
+TEST_F(MinimumInARotatedArrayTest, PivotLeftOfMid) {    
+    std::vector<int> arr1 = {5, 6, 7, 0, 1, 2, 3, 4};
+    EXPECT_EQ(SearchInARotatedArray::min(arr1), 3);  
+}
+
+TEST_F(MinimumInARotatedArrayTest, PivotRightOfMid) {    
+    std::vector<int> arr1 = {1, 2, 3, 4, 5, 6, 7, 0};
+    EXPECT_EQ(SearchInARotatedArray::min(arr1), 7);  
+}
+
 
 class SearchInARotatedArrayTest : public ::testing::Test {
 protected:
@@ -20,7 +49,7 @@ TEST_F(SearchInARotatedArrayTest, PivotAtMid) {
 
 TEST_F(SearchInARotatedArrayTest, PivotBeforeMid) {    
     std::vector<int> arr1 = {5, 6, 7, 0, 1, 2, 3, 4};
-    EXPECT_EQ(SearchInARotatedArray::find(arr1, 0), 4);  
+    EXPECT_EQ(SearchInARotatedArray::find(arr1, 0), 3);  
 }
 
 TEST_F(SearchInARotatedArrayTest, BasicRotatedArray) {
@@ -66,3 +95,4 @@ TEST_F(SearchInARotatedArrayTest, BoundaryConditions) {
     EXPECT_EQ(SearchInARotatedArray::find(arr, INT_MAX), 0);
     EXPECT_EQ(SearchInARotatedArray::find(arr, INT_MIN), 4);
 }
+

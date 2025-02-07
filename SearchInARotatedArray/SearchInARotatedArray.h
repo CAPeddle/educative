@@ -8,6 +8,7 @@ class SearchInARotatedArray
 {
 public:
     static int find(std::vector<int> arr, int target);
+    static int min(std::vector<int> arr);
 };
 
 #endif // SEARCHINAROTATEDARRAY_H

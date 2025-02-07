@@ -8,9 +8,14 @@ std::vector<int>::iterator binarySearch(std::vector<int> arr, int target) {
     auto start = arr.begin();
     auto end = arr.end() - 1;
     auto mid = start + std::distance(start, end) / 2;
+    
+    std::cout << "start: " << std::distance(arr.begin(), start) 
+              << " end: " << std::distance(arr.begin(), end) 
+              << " mid: " << std::distance(arr.begin(), mid) << std::endl;
 
     while (start <= end) {
         mid = start + std::distance(start, end) / 2;
+
         if (*mid < target)
             start = mid + 1;
         else if (*mid > target)
@@ -43,5 +48,5 @@ int searchRotatedArray(int arr[], int left, int right, int s) {
 
 int SearchInARotatedArray::find(std::vector<int> arr, int target)
 {
-    return 0;
+    return static_cast<int>(std::distance(arr.begin(), binarySearch(arr, target)));
 }

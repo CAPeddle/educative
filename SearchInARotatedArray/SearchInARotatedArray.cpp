@@ -5,6 +5,44 @@
 #include <iostream>
 #include <vector>
 
+
+//Solution from Educative. This is a good solution, not needing the 
+//search for minimum element in the array. It always does the "binary"
+//search in the correct half of the array.
+int BinarySearchRotated(std::vector<int>& nums, int target) {
+	int low = 0;
+	int mid = 0;
+	int high = nums.size() - 1;
+	
+	while (low <= high) {
+		// Finding the mid using integer division
+		mid = low + (high - low) / 2;
+		// Target value is present at the middle of the numsay
+		if (nums[mid] == target) return mid;
+		// low to mid is sorted
+
+		if (nums[low] <= nums[mid]) {
+			if (nums[low] <= target && target < nums[mid]) {
+				high = mid - 1;
+			}
+			else {
+				low = mid + 1;
+			}
+		}
+		// mid to high is sorted
+		else {
+			if (nums[mid] < target && target <= nums[high]) {
+				low = mid + 1;
+			}
+			else {
+				high = mid - 1;
+			}
+		}
+	}
+	return -1;
+}
+
+
 std::vector<int>::const_iterator minBinarySearch(const std::vector<int>& nums) {
   long left = 0;
   long right = nums.size() - 1;
@@ -59,7 +97,8 @@ int SearchInARotatedArray::find(std::vector<int> arr, int target) {
   if (it == arr.cend()) {
     return -1;
   } else {
-    return static_cast<int>(std::distance(arr.cbegin(), it));
+    // return static_cast<int>(std::distance(arr.cbegin(), it));
+    return BinarySearchRotated(arr, target);
   }
 }
 

@@ -6,13 +6,13 @@
 #include <vector>
 
 std::vector<int>::const_iterator minBinarySearch(const std::vector<int>& nums) {
-  int left = 0;
-  int right = nums.size() - 1;
+  long left = 0;
+  long right = nums.size() - 1;
 
   while (left < right) {
-    int mid = left + (right - left) / 2;
+    long mid = left + (right - left) / 2;
 
-    if (nums[mid] > nums[right]) {
+    if (nums[mid] >= nums[right]) {
       left = mid + 1;
     } else {
       right = mid;
@@ -34,7 +34,6 @@ std::vector<int>::const_iterator binarySearch(const std::vector<int>& arr,
   } else {
     end = minElementIt - 1;
   }
-
 
   while (start <= end) {
     mid = start + std::distance(start, end) / 2;

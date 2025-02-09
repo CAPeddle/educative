@@ -85,14 +85,23 @@ TEST_F(SearchInARotatedArrayTest, PivotPositions) {
 }
 
 TEST_F(SearchInARotatedArrayTest, DuplicateValues) {
-    const std::vector<int> withDupes{2, 2, 2, 3, 1, 2};
-    EXPECT_EQ(SearchInARotatedArray::find(withDupes, 1), 4);
-    EXPECT_EQ(SearchInARotatedArray::find(withDupes, 4), -1);
+    const std::vector<int> withLowDupes{2, 2, 2, 3, 1, 2};
+    EXPECT_EQ(SearchInARotatedArray::find(withLowDupes, 1), 4);
+    EXPECT_EQ(SearchInARotatedArray::find(withLowDupes, 4), -1);
+
+    const std::vector<int> withHighDupes{1, 2, 3, 4, 5, 5, 5};
+    EXPECT_EQ(SearchInARotatedArray::find(withHighDupes, 1), 0);
+    EXPECT_EQ(SearchInARotatedArray::find(withHighDupes, 6), -1);
+
+    const std::vector<int> withRotatedHighDupes{5, 5, 6, 1, 2, 3, 4, 5};
+    EXPECT_EQ(SearchInARotatedArray::find(withRotatedHighDupes, 1), 3);
+    EXPECT_EQ(SearchInARotatedArray::find(withRotatedHighDupes, 7), -1);
+    EXPECT_EQ(SearchInARotatedArray::find(withRotatedHighDupes, 6), 2);
 }
 
 TEST_F(SearchInARotatedArrayTest, BoundaryConditions) {
-    const std::vector<int> arr{INT_MAX, 0, 1, 2, INT_MIN};
-    EXPECT_EQ(SearchInARotatedArray::find(arr, INT_MAX), 0);
-    EXPECT_EQ(SearchInARotatedArray::find(arr, INT_MIN), 4);
+    const std::vector<int> arr{INT_MIN, 0, 1, 2, INT_MAX};
+    EXPECT_EQ(SearchInARotatedArray::find(arr, INT_MAX), 4);
+    EXPECT_EQ(SearchInARotatedArray::find(arr, INT_MIN), 0);
 }
 

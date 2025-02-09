@@ -46,7 +46,6 @@ TEST_F(SearchInARotatedArrayTest, PivotAtMid) {
     EXPECT_EQ(SearchInARotatedArray::find(arr1, 0), 4);  
 }
 
-
 TEST_F(SearchInARotatedArrayTest, PivotBeforeMid) {    
     std::vector<int> arr1 = {5, 6, 7, 0, 1, 2, 3, 4};
     EXPECT_EQ(SearchInARotatedArray::find(arr1, 0), 3);  
@@ -65,8 +64,8 @@ TEST_F(SearchInARotatedArrayTest, EdgeCases) {
     EXPECT_EQ(SearchInARotatedArray::find(empty, 1), -1);
     
     // Single element
-    const std::vector<int> single{1};
-    EXPECT_EQ(SearchInARotatedArray::find(single, 1), 0);
+    const std::vector<int> single{4};
+    EXPECT_EQ(SearchInARotatedArray::find(single, 4), 0);
     EXPECT_EQ(SearchInARotatedArray::find(single, 2), -1);
 }
 
@@ -82,6 +81,9 @@ TEST_F(SearchInARotatedArrayTest, PivotPositions) {
     // Pivot at end-1
     const std::vector<int> nearEnd{6, 7, 1, 2, 3, 4, 5};
     EXPECT_EQ(SearchInARotatedArray::find(nearEnd, 1), 2);
+
+    const std::vector<int> beforeMid{6, 7, 1, 2, 3, 4, 5};
+    EXPECT_EQ(SearchInARotatedArray::find(beforeMid, 6), 0);
 }
 
 TEST_F(SearchInARotatedArrayTest, DuplicateValues) {

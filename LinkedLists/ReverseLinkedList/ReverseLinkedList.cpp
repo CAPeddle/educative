@@ -14,7 +14,7 @@
 
 #include "LinkedListNode.h"
 
-EduLinkedListNode *Reverse(EduLinkedListNode *head) {
+LinkedListNode *Reverse(LinkedListNode *head) {
   
     // Replace this placeholder return statement with your code
     return head;

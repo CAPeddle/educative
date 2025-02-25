@@ -4,11 +4,11 @@
 #include "LinkedListNode.h"
 #include <iostream>
 
-void TraverseLinkedList(std::unique_ptr<EduLinkedListNode> head){
+void TraverseLinkedList(std::unique_ptr<LinkedListNode> head){
     
-    std::unique_ptr<EduLinkedListNode> current = std::move(head); 
+    std::unique_ptr<LinkedListNode> current = std::move(head); 
 
-    std::unique_ptr<EduLinkedListNode> nxt = nullptr; 
+    std::unique_ptr<LinkedListNode> nxt = nullptr; 
 
     while (current != nullptr){
       std::cout << current->data << "-> ";

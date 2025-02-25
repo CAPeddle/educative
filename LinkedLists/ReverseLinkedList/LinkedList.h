@@ -9,28 +9,32 @@
 //https://solarianprogrammer.com/2019/02/22/cpp-17-implementing-singly-linked-list-smart-pointers/
 
 // Template for the linked list
-class EduLinkedList
+class LinkedList
 {
 public:
-    // EduLinkedListNode *head = new EduLinkedListNode(0);
+    std::unique_ptr<LinkedListNode> head;
 
-    std::unique_ptr<EduLinkedListNode> head;
+    LinkedList() { head = nullptr; }
+    LinkedList(std::unique_ptr<LinkedListNode> h) { head = std::move(h); }    
+    LinkedList(std::vector<int> &vec);
 
-    EduLinkedList() { head = nullptr; }
-    EduLinkedList(std::unique_ptr<EduLinkedListNode> h) { head = std::move(h); }    
-
-    virtual ~EduLinkedList() {}
-
-    // InsertNodeAtHead() method will insert a LinkedListNode at head
-    // of a linked list.
-    void InsertNodeAtHead(std::unique_ptr<EduLinkedListNode> node);
+    virtual ~LinkedList() {}
 
     // CreateLinkedList() method will create the linked list using the
     // given integer array with the help of InsertAthead method.
-    void CreateLinkedList(std::vector<int> &vec);
+    static std::unique_ptr<LinkedList> CreateLinkedList(std::vector<int> &vec);
+
+    // InsertNodeAtHead() method will insert a LinkedListNode at head
+    // of a linked list.
+    void InsertNodeAtHead(std::unique_ptr<LinkedListNode> node);
+
+
 
     // ToString() method will display the elements of linked list.
     std::string ToString();
+
+    friend std::ostream& operator<<(std::ostream &os, const LinkedList &list);
+
 };
 
 #endif // LINKEDLIST_H

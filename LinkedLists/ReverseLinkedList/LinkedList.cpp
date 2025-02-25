@@ -1,10 +1,26 @@
-#include "LinkedListNode.h"
 #include "LinkedList.h"
 #include <vector>
 #include <string>
 #include <memory>
+#include <iostream>
 
-void EduLinkedList::InsertNodeAtHead(std::unique_ptr<EduLinkedListNode> node)
+LinkedList::LinkedList(std::vector<int> &vec)
+{    
+    for (size_t i = vec.size() - 1; i >= 0; i--)
+    {
+        auto node = std::make_unique<LinkedListNode>(vec[i]);
+        InsertNodeAtHead(std::move(node));
+    }
+}
+
+std::unique_ptr<LinkedList> LinkedList::CreateLinkedList(std::vector<int> &vec)
+{
+    auto list = std::make_unique<LinkedList>(vec);
+    return list;
+}
+
+
+void LinkedList::InsertNodeAtHead(std::unique_ptr<LinkedListNode> node)
 {
     if (head != nullptr)
     {
@@ -17,28 +33,32 @@ void EduLinkedList::InsertNodeAtHead(std::unique_ptr<EduLinkedListNode> node)
     }
 }
 
-void EduLinkedList::CreateLinkedList(std::vector<int> &vec)
-{
-    for (int i = vec.size() - 1; i >= 0; i--)
-    {
-        auto node = std::make_unique<EduLinkedListNode>( new EduLinkedListNode(vec[i]));
-        InsertNodeAtHead(std::move(node));
-    }
-}
+// std::string EduLinkedList::ToString()
+// {
+//     std::string result = "[";
+//     EduLinkedListNode* temp = head.get();
+//     while (temp != nullptr)
+//     {
+//         result += std::to_string(temp->data);
+//         temp = temp->next.get();
+//         if (temp != nullptr)
+//         {
+//             result += ",";
+//         }
+//     }
+//     result += "]";
+//     return result;
+// }
 
-std::string EduLinkedList::ToString()
+std::ostream &operator<<(std::ostream &os, const LinkedList &list)
 {
-    std::string result = "[";
-    std::unique_ptr<EduLinkedListNode> temp = head;
-    while (temp != nullptr)
+    LinkedListNode *head = list.head.get();
+    os << "[";
+    while (head)
     {
-        result += std::to_string(temp->data);
-        temp = temp->next;
-        if (temp != nullptr)
-        {
-            result += ",";
-        }
+        os << head->data << ' ';
+        head = head->next.get();
     }
-    result += "]";
-    return result;
+    os << "]";
+    return os;
 }

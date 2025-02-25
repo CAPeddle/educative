@@ -1,20 +1,21 @@
-﻿# CMakeList.txt : CMake project for SearchInARotatedArray, include source and define
+﻿# CMakeList.txt : CMake project for ReverseLinkedList, include source and define
 # project specific logic here.
 #
 cmake_minimum_required (VERSION 3.14)
 
 # Define the project name
-project(SearchInARotatedArray)
+project(ReverseLinkedList)
 
 # Create library from source files
-add_library(SearchInARotatedArrayLib 
-    "SearchInARotatedArray.cpp"
-    "SearchInARotatedArray.h"
+add_library(ReverseLinkedListLib 
+    "LinkedList.cpp"
+    "LinkedList.h"
+    "LinkedListNode.h"
 )
 
 # Add source to this project's executable.
-add_executable (SearchInARotatedArray "main.cpp")
-target_link_libraries(SearchInARotatedArray PRIVATE SearchInARotatedArrayLib)
+add_executable (ReverseLinkedList "main.cpp")
+target_link_libraries(ReverseLinkedList PRIVATE ReverseLinkedListLib)
 
 # Add the test subdirectory
-add_subdirectory(test)
+# add_subdirectory(test)

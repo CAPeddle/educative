@@ -1,13 +1,15 @@
-//https://www.educative.io/module/page/ovPPvKJYVy7s6xGY0PZV7l/5864882417434624/6674134241247232/4576271021506560
+//https://www.educative.io/module/page/ovPPvKJYVy7s6xGY0PZV7l/5864882417434624/6674134241247232/5362666220683264
 
-#include "SearchInARotatedArray.h"
+#include "LinkedList.h"
 #include <iostream>
+#include <vector>
 
 int main()
 {
-    int arr[] = { 7, 8, 9, 0, 3, 5, 6 };
-    int left = 0; // Index of the start of the array
-    int right = 6; // Index of the end of the array
+    std::vector<int> vec = { 7, 8, 9, 0, 3, 5, 6 };
 
-    std::cout << "Hello, World!" << std::endl;
+    LinkedListNode* node = new LinkedListNode(4);
+
+    auto list = LinkedList::CreateLinkedList(vec);
+    std::cout << "Hello, World!" << list << std::endl;
 }

@@ -1,5 +1,5 @@
 // Template for printing the linked list with forward arrows
-#include "LinkedListNode.cpp"
+#include "EduLinkedListNode.cpp"
 #include <iostream>
 
 void PrintListWithForwardArrow(EduLinkedListNode *linkedListNode)

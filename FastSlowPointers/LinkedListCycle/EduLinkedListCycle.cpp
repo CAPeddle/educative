@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include "LinkedList.hpp"
+#include "EduLinkedList.hpp"
 #include "PrintList.cpp"
 #include <iostream>
 #include <cstdint>

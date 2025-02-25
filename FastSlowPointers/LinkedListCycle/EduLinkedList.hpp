@@ -1,4 +1,4 @@
-#include "LinkedListNode.cpp"
+#include "EduLinkedListNode.cpp"
 #include <vector>
 #pragma once
 class EduLinkedList {
@@ -18,7 +18,7 @@ public:
 	// CreateLinkedList() method will create the linked list using the
     // given integer array with the help of InsertAthead method.
 	void CreateLinkedList(std::vector<int>& vec) {
-		for (int i = vec.size() - 1; i >= 0; i--) {
+		for (size_t i = vec.size() - 1; i >= 0; i--) {
 			EduLinkedListNode *node = new EduLinkedListNode(vec[i]);
 			InsertNodeAtHead(node);
 		}

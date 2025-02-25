@@ -6,11 +6,12 @@
 
 LinkedList::LinkedList(std::vector<int> &vec)
 {    
-    for (size_t i = vec.size() - 1; i >= 0; i--)
+    for (auto it = vec.rbegin(); it != vec.rend(); ++it)
     {
-        auto node = std::make_unique<LinkedListNode>(vec[i]);
+        auto node = std::make_unique<LinkedListNode>(*it);
         InsertNodeAtHead(std::move(node));
     }
+
 }
 
 std::unique_ptr<LinkedList> LinkedList::CreateLinkedList(std::vector<int> &vec)
@@ -49,6 +50,19 @@ void LinkedList::InsertNodeAtHead(std::unique_ptr<LinkedListNode> node)
 //     result += "]";
 //     return result;
 // }
+
+std::ostream &operator<<(std::ostream &os, const std::unique_ptr<LinkedList> &list)
+{
+    LinkedListNode *head = list->head.get();
+    os << "[";
+    while (head)
+    {
+        os << head->data << ' ';
+        head = head->next.get();
+    }
+    os << "]";
+    return os;
+}
 
 std::ostream &operator<<(std::ostream &os, const LinkedList &list)
 {

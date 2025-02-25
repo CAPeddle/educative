@@ -34,6 +34,7 @@ public:
     std::string ToString();
 
     friend std::ostream& operator<<(std::ostream &os, const LinkedList &list);
+    friend std::ostream &operator<<(std::ostream &os, const std::unique_ptr<LinkedList> &list);
 
 };
 

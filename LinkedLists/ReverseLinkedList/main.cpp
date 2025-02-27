@@ -8,8 +8,16 @@ int main()
 {
     std::vector<int> vec = { 7, 8, 9, 0, 3, 5, 6 };
 
-    LinkedListNode* node = new LinkedListNode(4);
-
     auto list = LinkedList::CreateLinkedList(vec);
-    std::cout << "Hello, World!" << list << std::endl;
+    std::cout << "Hello, World! " << list << std::endl;
 }
+
+
+/*
+TODO: 
+
+Create iterator class to enable STL algos to work on linked list. 
+1st. Sort which then needs 
+
+
+*/

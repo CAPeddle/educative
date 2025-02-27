@@ -28,14 +28,8 @@ public:
     // of a linked list.
     void InsertNodeAtHead(std::unique_ptr<LinkedListNode> node);
 
-
-
-    // ToString() method will display the elements of linked list.
-    std::string ToString();
-
     friend std::ostream& operator<<(std::ostream &os, const LinkedList &list);
     friend std::ostream &operator<<(std::ostream &os, const std::unique_ptr<LinkedList> &list);
-
 };
 
 #endif // LINKEDLIST_H

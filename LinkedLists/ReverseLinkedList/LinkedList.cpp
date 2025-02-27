@@ -11,7 +11,6 @@ LinkedList::LinkedList(std::vector<int> &vec)
         auto node = std::make_unique<LinkedListNode>(*it);
         InsertNodeAtHead(std::move(node));
     }
-
 }
 
 std::unique_ptr<LinkedList> LinkedList::CreateLinkedList(std::vector<int> &vec)
@@ -33,23 +32,6 @@ void LinkedList::InsertNodeAtHead(std::unique_ptr<LinkedListNode> node)
         head = std::move(node);
     }
 }
-
-// std::string EduLinkedList::ToString()
-// {
-//     std::string result = "[";
-//     EduLinkedListNode* temp = head.get();
-//     while (temp != nullptr)
-//     {
-//         result += std::to_string(temp->data);
-//         temp = temp->next.get();
-//         if (temp != nullptr)
-//         {
-//             result += ",";
-//         }
-//     }
-//     result += "]";
-//     return result;
-// }
 
 std::ostream &operator<<(std::ostream &os, const std::unique_ptr<LinkedList> &list)
 {

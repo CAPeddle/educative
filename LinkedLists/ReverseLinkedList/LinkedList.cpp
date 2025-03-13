@@ -1,15 +1,21 @@
 #include "LinkedList.h"
+// #include "LinkedListForwardIterator.h"
 #include <vector>
-#include <string>
 #include <memory>
 #include <iostream>
 
+
+// LinkedList::ListForwardIterator LinkedList::begin()
+// {
+//     ListForwardIterator fwd_iterator(head);
+//     return fwd_iterator;
+// }
+
 LinkedList::LinkedList(std::vector<int> &vec)
-{    
+{
     for (auto it = vec.rbegin(); it != vec.rend(); ++it)
     {
-        auto node = std::make_unique<LinkedListNode>(*it);
-        InsertNodeAtHead(std::move(node));
+        InsertNodeAtHead(std::make_unique<LinkedListNode>(*it));
     }
 }
 
@@ -18,7 +24,6 @@ std::unique_ptr<LinkedList> LinkedList::CreateLinkedList(std::vector<int> &vec)
     auto list = std::make_unique<LinkedList>(vec);
     return list;
 }
-
 
 void LinkedList::InsertNodeAtHead(std::unique_ptr<LinkedListNode> node)
 {

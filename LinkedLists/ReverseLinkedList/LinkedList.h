@@ -12,10 +12,9 @@
 class LinkedList
 {
 public:
-    std::unique_ptr<LinkedListNode> head;
-
     LinkedList() { head = nullptr; }
     LinkedList(std::unique_ptr<LinkedListNode> &h) { head = std::move(h); }
+    LinkedList(std::shared_ptr<LinkedListNode> &h) { head = h; }
     LinkedList(std::vector<int> &vec);
     LinkedList(LinkedList &list) = delete;
     LinkedList(const LinkedList &list) = delete;
@@ -23,15 +22,18 @@ public:
     virtual ~LinkedList()
     {
         // TODO confirm this uses iterative instead of recursive destroy
-        std::cout << "destroying linkedlist \n";
+        // std::cout << "destroying linkedlist \n";
     }
 
     static std::unique_ptr<LinkedList> CreateLinkedList(std::vector<int> &vec);
 
-    void InsertNodeAtHead(std::unique_ptr<LinkedListNode> node);
- 
+    void InsertNodeAtHead(std::shared_ptr<LinkedListNode> node);
+
     friend std::ostream &operator<<(std::ostream &os, const LinkedList &list);
     friend std::ostream &operator<<(std::ostream &os, const std::unique_ptr<LinkedList> &list);
+
+    std::shared_ptr<LinkedListNode> head;
+private:
 };
 
 #endif // LINKEDLIST_H

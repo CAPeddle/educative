@@ -15,7 +15,7 @@ LinkedList::LinkedList(std::vector<int> &vec)
 {
     for (auto it = vec.rbegin(); it != vec.rend(); ++it)
     {
-        InsertNodeAtHead(std::make_unique<LinkedListNode>(*it));
+        InsertNodeAtHead(std::make_shared<LinkedListNode>(*it));
     }
 }
 
@@ -25,16 +25,16 @@ std::unique_ptr<LinkedList> LinkedList::CreateLinkedList(std::vector<int> &vec)
     return list;
 }
 
-void LinkedList::InsertNodeAtHead(std::unique_ptr<LinkedListNode> node)
+void LinkedList::InsertNodeAtHead(std::shared_ptr<LinkedListNode> node)
 {
     if (head != nullptr)
     {
         node->next = std::move(head);
-        head = std::move(node);
+        head = node;
     }
     else
     {
-        head = std::move(node);
+        head = node;
     }
 }
 

@@ -12,3 +12,7 @@ If there was any intention to make the class thread safe this would be a weak po
 Finally, trying to add an iterator for the list it became untenable. Considered creating an iterator class that is a singleton or a monostate. And realised this wouldnt be expected behaviour - that iterators can't keep track of different points in a list. 
 
 So reverting the unique pointer idea as nothing more than an excercise in practicing converting raw pointers to smart
+
+So then moved everything to smart pointers. 
+
+Then realised, that std::list (porobably) doesn't use shared_ptr because it's not possible to get individual smart pointers back but you get a reference. So then I could implement it with unique_ptr and pass out a reference? 

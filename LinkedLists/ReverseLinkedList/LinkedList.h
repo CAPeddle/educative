@@ -14,7 +14,6 @@ class LinkedList
 public:
     LinkedList() { head = nullptr; }
     LinkedList(std::unique_ptr<LinkedListNode> &h) { head = std::move(h); }
-    LinkedList(std::shared_ptr<LinkedListNode> &h) { head = h; }
     LinkedList(std::vector<int> &vec);
     LinkedList(LinkedList &list) = delete;
     LinkedList(const LinkedList &list) = delete;
@@ -27,12 +26,12 @@ public:
 
     static std::unique_ptr<LinkedList> CreateLinkedList(std::vector<int> &vec);
 
-    void InsertNodeAtHead(std::shared_ptr<LinkedListNode> node);
+    void InsertNodeAtHead(std::unique_ptr<LinkedListNode> node);
 
     friend std::ostream &operator<<(std::ostream &os, const LinkedList &list);
     friend std::ostream &operator<<(std::ostream &os, const std::unique_ptr<LinkedList> &list);
 
-    std::shared_ptr<LinkedListNode> head;
+    std::unique_ptr<LinkedListNode> head;
 private:
 };
 

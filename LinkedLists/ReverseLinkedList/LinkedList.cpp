@@ -20,20 +20,6 @@
 #include <string>
 #include <vector>
 
-EduLinkedListNode *Reverse(EduLinkedListNode *head) {
-  
-    // Replace this placeholder return statement with your code
-    
-    EduLinkedListNode *curr;    
-    EduLinkedListNode *next = head->next;    
-    
-    while (curr->next){
-        
-    }
-    
-    return head;
-}
-
 // Template for the linked list
 class EduLinkedList
 {
@@ -41,7 +27,7 @@ public:
     EduLinkedListNode *head = new EduLinkedListNode(0);
     // EduLinkedList() will be used to make a EduLinkedList type object
     EduLinkedList() { head = nullptr; }
-    EduLinkedList(EduLinkedListNode *h) { head = h; }    
+    EduLinkedList(EduLinkedListNode *h) { head = h; }
     // InsertNodeAtHead() method will insert a LinkedListNode at head
     // of a linked list.
     void InsertNodeAtHead(EduLinkedListNode *node)
@@ -82,6 +68,45 @@ public:
         }
         result += "]";
         return result;
+    }
+
+    EduLinkedListNode *Reverse(EduLinkedListNode *head)
+    {
+        if (1 == 2)
+        {
+            EduLinkedListNode *prev = nullptr;
+            EduLinkedListNode *next = nullptr;
+            EduLinkedListNode *curr = head;
+
+            while (curr != nullptr)
+            {
+                next = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = next;
+            }
+
+            head = prev;
+            return head;
+        }
+        else
+        {
+            EduLinkedListNode *current = head;
+            EduLinkedListNode *nxt = current->next;
+            EduLinkedListNode *previous = nullptr;
+
+            while (nxt != nullptr)
+            {
+                nxt = current->next;
+                current->next = previous;
+
+                previous = current;
+                current = nxt;
+            }
+
+            head = current;
+            return head;
+        }
     }
 };
 

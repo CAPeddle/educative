@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "LinkedList.h"
-// #include "LinkedListForwardIterator.h"
+#include "LinkedList.cpp"
+
 #include <climits>
 #include <sstream>
 
@@ -16,48 +16,22 @@ protected:
 TEST_F(CreationTest, ListFromVec)
 {
     std::vector<int> vec = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-    // auto list_from_vec = LinkedList::CreateLinkedList(vec);
+    // std::vector<int> vec = {9, 8, 7, 6, 5};
+    auto list_from_vec = EduLinkedList();
+    list_from_vec.CreateLinkedList(vec);
+    std::cout << "list_from_vec: " << list_from_vec.ToString() <<std::endl;
 
-    // std::stringstream streamed;
-    // streamed << list_from_vec;
+    EXPECT_EQ (list_from_vec.ToString(), "[9,8,7,6,5,4,3,2,1,0]");
 
-    // EXPECT_EQ("[9 8 7 6 5 4 3 2 1 0 ]", streamed.str());
+    auto new_head = list_from_vec.Reverse(list_from_vec.head);
+
+    auto reversed_list = EduLinkedList(new_head);
+    
+    std::cout << "reversed_list: " << reversed_list.ToString() <<std::endl;
+
+    EXPECT_EQ (reversed_list.ToString(), "[0,1,2,3,4,5,6,7,8,9]");
 }
 
-class PrintTest : public ::testing::Test
-{
-protected:
-    void SetUp() override {}
-    void TearDown() override {}
-};
 
-
-class DeleteTest : public ::testing::Test
-{
-protected:
-    void SetUp() override {}
-    void TearDown() override {}
-};
-
-
-// #include <list>
-
-// class STL_List : public ::testing::Test
-// {
-// protected:
-//     void SetUp() override {}
-//     void TearDown() override {}
-
-//     std::list<int> create(std::vector<int> &vec)
-//     {
-//         std::list<int> list;
-
-//         for (auto it = vec.rbegin(); it != vec.rend(); ++it)
-//         {
-//             list.emplace_back(*it);
-//         }
-//         return list;
-//     }
-// };
 
 

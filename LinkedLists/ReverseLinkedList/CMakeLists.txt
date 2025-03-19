@@ -17,4 +17,4 @@ add_executable (ReverseLinkedList "main.cpp")
 target_link_libraries(ReverseLinkedList PRIVATE ReverseLinkedListLib)
 
 # Add the test subdirectory
-# add_subdirectory(test)
+add_subdirectory(test)

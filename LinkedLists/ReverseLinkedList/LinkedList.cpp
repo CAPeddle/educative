@@ -1,44 +1,88 @@
-#include "LinkedList.h"
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
+#include "LinkedListNode.cpp"
+
+#include <string>
 #include <vector>
-#include <memory>
+
+// Definition for a Linked List node
+// struct EduLinkedListNode {
+//     int data;
+//     EduLinkedListNode *next;
+//     EduLinkedListNode(int d) {
+//         data = d;
+//         next = nullptr;
+//     }
+// };
+
 #include <iostream>
+#include <string>
+#include <vector>
 
-LinkedList::LinkedList(std::vector<int> &vec)
-{
-    for (auto it = vec.rbegin(); it != vec.rend(); ++it)
-    {
-        InsertNodeAtHead(std::make_unique<LinkedListNode>(*it));
+EduLinkedListNode *Reverse(EduLinkedListNode *head) {
+  
+    // Replace this placeholder return statement with your code
+    
+    EduLinkedListNode *curr;    
+    EduLinkedListNode *next = head->next;    
+    
+    while (curr->next){
+        
     }
+    
+    return head;
 }
 
-std::unique_ptr<LinkedList> LinkedList::CreateLinkedList(std::vector<int> &vec)
+// Template for the linked list
+class EduLinkedList
 {
-    auto list = std::make_unique<LinkedList>(vec);
-    return list;
-}
-
-void LinkedList::InsertNodeAtHead(std::unique_ptr<LinkedListNode> node)
-{
-    if (head != nullptr)
+public:
+    EduLinkedListNode *head = new EduLinkedListNode(0);
+    // EduLinkedList() will be used to make a EduLinkedList type object
+    EduLinkedList() { head = nullptr; }
+    EduLinkedList(EduLinkedListNode *h) { head = h; }    
+    // InsertNodeAtHead() method will insert a LinkedListNode at head
+    // of a linked list.
+    void InsertNodeAtHead(EduLinkedListNode *node)
     {
-        node->next = std::move(head);
-        head = std::move(node);
+        if (head != nullptr)
+        {
+            node->next = head;
+            head = node;
+        }
+        else
+        {
+            head = node;
+        }
     }
-    else
+    // CreateLinkedList() method will create the linked list using the
+    // given integer array with the help of InsertAthead method.
+    void CreateLinkedList(std::vector<int> &vec)
     {
-        head = std::move(node);
+        for (int i = (int)vec.size() - 1; i >= 0; i--)
+        {
+            EduLinkedListNode *node = new EduLinkedListNode(vec[i]);
+            InsertNodeAtHead(node);
+        }
     }
-}
+    // ToString() method will display the elements of linked list.
+    std::string ToString()
+    {
+        std::string result = "[";
+        EduLinkedListNode *temp = head;
+        while (temp != nullptr)
+        {
+            result += std::to_string(temp->data);
+            temp = temp->next;
+            if (temp != nullptr)
+            {
+                result += ",";
+            }
+        }
+        result += "]";
+        return result;
+    }
+};
 
-std::ostream &operator<<(std::ostream &os, const std::unique_ptr<LinkedList> &list)
-{
-    os << list->head;
-    return os;
-}
-
-std::ostream &operator<<(std::ostream &os, const LinkedList &list)
-{   
-    os << list.head;
-   
-    return os;
-}
+#endif // LINKEDLIST_H

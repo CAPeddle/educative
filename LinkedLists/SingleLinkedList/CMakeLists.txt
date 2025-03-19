@@ -8,8 +8,11 @@ project(ReverseLinkedList)
 
 # Create library from source files
 add_library(ReverseLinkedListLib 
-    "LinkedListNode.cpp"
+    "LinkedListNode.h"
+    "LinkedList.h"
     "LinkedList.cpp"
+    "LinkedListForwardIterator.h"
+    "LinkedListForwardIterator.cpp"
 )
 
 # Add source to this project's executable.
@@ -17,4 +20,4 @@ add_executable (ReverseLinkedList "main.cpp")
 target_link_libraries(ReverseLinkedList PRIVATE ReverseLinkedListLib)
 
 # Add the test subdirectory
-# add_subdirectory(test)
+add_subdirectory(test)

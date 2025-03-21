@@ -72,42 +72,45 @@ public:
 
     EduLinkedListNode *Reverse(EduLinkedListNode *head)
     {
-        if (1 == 2)
+
+        EduLinkedListNode *current = head;
+        EduLinkedListNode *nxt = current->next;
+        EduLinkedListNode *previous = nullptr;
+
+        while (nxt != nullptr)
         {
-            EduLinkedListNode *prev = nullptr;
-            EduLinkedListNode *next = nullptr;
-            EduLinkedListNode *curr = head;
+            nxt = current->next;
+            current->next = previous;
 
-            while (curr != nullptr)
-            {
-                next = curr->next;
-                curr->next = prev;
-                prev = curr;
-                curr = next;
-            }
-
-            head = prev;
-            return head;
+            previous = current;
+            current = nxt;
         }
-        else
-        {
-            EduLinkedListNode *current = head;
-            EduLinkedListNode *nxt = current->next;
-            EduLinkedListNode *previous = nullptr;
 
-            while (nxt != nullptr)
-            {
-                nxt = current->next;
-                current->next = previous;
-
-                previous = current;
-                current = nxt;
-            }
-
-            head = current;
-            return head;
-        }
+        head = previous;
+        return head;
     }
+
+    EduLinkedListNode *ReverseBetween(EduLinkedListNode *head, int left, int right)
+    {
+
+        // Replace this placeholder return statement with your code
+        return head;
+    }
+
+private:
+EduLinkedListNode * TraverseLinkedListUntil(EduLinkedListNode *head, int position)
+    {
+        EduLinkedListNode *current = head;
+        EduLinkedListNode *nxt = nullptr;
+        while (current != nullptr)
+        {
+            std::cout << current->data << "-> ";
+            nxt = current->next;
+            current = nxt;
+        }
+        return head;
+    }
+
 };
 
 #endif // LINKEDLIST_H

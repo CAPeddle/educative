@@ -48,18 +48,18 @@ int main() {
     linkedlists->CreateLinkedList(inputs[i]);
     std::cout << i + 1 << ".\tInput:\t";
     if(pos[i] == -1){
-      PrintListWithForwardArrow(linkedlists->head);
+      PrintListWithForwardArrow(linkedlists->m_head);
     }
     else{
-      PrintListWithForwardArrowLoop(linkedlists->head);
+      PrintListWithForwardArrowLoop(linkedlists->m_head);
     }
     std::cout<<"\n\tpos: "<<pos[i];
     if (pos[i] != -1){
-      int length = linkedlists->GetLength(linkedlists->head);
-      EduLinkedListNode* lastNode = linkedlists->GetNode(linkedlists->head, length - 1);
-      lastNode->next = linkedlists->GetNode(linkedlists->head, pos[i]);
+      int length = linkedlists->GetLength(linkedlists->m_head);
+      EduLinkedListNode* lastNode = linkedlists->GetNode(linkedlists->m_head, length - 1);
+      lastNode->next = linkedlists->GetNode(linkedlists->m_head, pos[i]);
     }
-    bool cycle = DetectCycle(linkedlists->head);
+    bool cycle = DetectCycle(linkedlists->m_head);
     std::cout << "\n\n\tDetected cyle: " << std::boolalpha << cycle << "\n";
     std::cout << std::string(100, '-') << "\n";
   }

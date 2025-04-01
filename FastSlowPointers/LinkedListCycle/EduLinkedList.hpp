@@ -3,16 +3,16 @@
 #pragma once
 class EduLinkedList {
 public:
-	EduLinkedListNode* head;
-	EduLinkedList() { head = nullptr; }
+	EduLinkedListNode* m_head;
+	EduLinkedList() { m_head = nullptr; }
 	// InsertNodeAtHead() method will insert a LinkedListNode at head
     // of a linked list.
 	void InsertNodeAtHead(EduLinkedListNode *node) {
-		if(head != nullptr){
-			node -> next = head;
-			head = node;
+		if(m_head != nullptr){
+			node -> next = m_head;
+			m_head = node;
 		} else {
-			head = node;
+			m_head = node;
 		}
 	}
 	// CreateLinkedList() method will create the linked list using the
@@ -52,7 +52,7 @@ public:
 	// ToString() method will display the elements of linked list.
     std::string ToString(){
         std::string result = "";
-        EduLinkedListNode *temp = head;
+        EduLinkedListNode *temp = m_head;
         while (temp != nullptr){
             result += std::to_string(temp->data);
             temp = temp->next;

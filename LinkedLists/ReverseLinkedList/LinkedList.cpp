@@ -22,22 +22,22 @@
 class EduLinkedList
 {
 public:
-    EduLinkedListNode *head = new EduLinkedListNode(0);
+    EduLinkedListNode *m_head = new EduLinkedListNode(0);
     // EduLinkedList() will be used to make a EduLinkedList type object
-    EduLinkedList() { head = nullptr; }
-    EduLinkedList(EduLinkedListNode *h) { head = h; }
+    EduLinkedList() { m_head = nullptr; }
+    EduLinkedList(EduLinkedListNode *h) { m_head = h; }
     // InsertNodeAtHead() method will insert a LinkedListNode at head
     // of a linked list.
     void InsertNodeAtHead(EduLinkedListNode *node)
     {
-        if (head != nullptr)
+        if (m_head != nullptr)
         {
-            node->next = head;
-            head = node;
+            node->next = m_head;
+            m_head = node;
         }
         else
         {
-            head = node;
+            m_head = node;
         }
     }
     // CreateLinkedList() method will create the linked list using the
@@ -55,7 +55,7 @@ public:
     std::string ToString()
     {
         std::string result = "[";
-        EduLinkedListNode *temp = head;
+        EduLinkedListNode *temp = m_head;
         while (temp != nullptr)
         {
             result += std::to_string(temp->data);
@@ -95,42 +95,30 @@ public:
     // Not zero based, '1' is the start
     EduLinkedListNode *ReverseBetween(EduLinkedListNode *head, int left, int right)
     {
-        EduLinkedListNode *beforeleftNode = nullptr;
-        EduLinkedListNode *rightNode = nullptr;
-        try
-        {
-            beforeleftNode = TraverseLinkedListUntil(head, left - 1);
-            rightNode = TraverseLinkedListUntil(head, right);
+        if (!head || left == right) {
+            return head;
         }
-        catch (const std::exception &e)
-        {
-            std::string error_text = std::string("Invalid request, ") + e.what();
-            throw std::invalid_argument(error_text);
+    
+        EduLinkedListNode* dummy = new EduLinkedListNode(0);
+        dummy->next = head;
+        EduLinkedListNode* prev = dummy;
+    
+        for (int i = 0; i < left - 1; i++) {
+            prev = prev->next;
         }
-
-        if (beforeleftNode == nullptr || rightNode == nullptr)
-        {
-            throw std::exception("Invalid ");
+    
+        EduLinkedListNode* curr = prev->next;
+    
+        for (int i = 0; i < right - left; i++) {
+            EduLinkedListNode* nextNode = curr->next;
+            curr->next = nextNode->next;
+            nextNode->next = prev->next;
+            prev->next = nextNode;
         }
-
-        EduLinkedListNode *afterRightNode = rightNode->next;
-        EduLinkedListNode *current = beforeleftNode->next;
-        EduLinkedListNode *nxt = current->next;
-        EduLinkedListNode *previous = nullptr;
-
-        while (current != afterRightNode && nxt != nullptr)
-        {
-            nxt = current->next;
-            current->next = previous;
-
-            previous = current;
-            current = nxt;
-        }
-        beforeleftNode->next->next = current;
-        beforeleftNode->next = rightNode;
-
+        
+        m_head = dummy->next;
         ToString();
-        return head;
+        return dummy->next;
     }
 
     // Not zero based, '1' is the start

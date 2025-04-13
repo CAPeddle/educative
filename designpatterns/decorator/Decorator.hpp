@@ -3,11 +3,14 @@
 
 #include <string>
 #include <memory>
+#include <iostream>
 
 // Abstract Beverage class
 class Beverage {
 public:
-    virtual ~Beverage() = default;
+    virtual ~Beverage() {
+        std::cout << "Destroying Beverage" << std::endl;
+    }
     virtual std::string getDescription() const = 0;
     virtual double cost() const = 0;
 };
@@ -15,6 +18,10 @@ public:
 // Concrete Beverage: Coffee
 class Coffee : public Beverage {
 public:
+    ~Coffee() override {
+        std::cout << "Destroying Coffee" << std::endl;
+    }
+
     std::string getDescription() const override {
         return "Coffee";
     }
@@ -27,6 +34,10 @@ public:
 // Concrete Beverage: Tea
 class Tea : public Beverage {
 public:
+    ~Tea() override {
+        std::cout << "Destroying Tea" << std::endl;
+    }
+
     std::string getDescription() const override {
         return "Tea";
     }
@@ -39,7 +50,9 @@ public:
 // Abstract Decorator class for condiments
 class CondimentDecorator : public Beverage {
 public:
-    virtual ~CondimentDecorator() = default;
+    ~CondimentDecorator() override {
+        std::cout << "Destroying CondimentDecorator" << std::endl;
+    }
 };
 
 // Concrete Condiment: Milk
@@ -49,6 +62,10 @@ private:
 
 public:
     explicit Milk(std::shared_ptr<Beverage> bev) : beverage(std::move(bev)) {}
+
+    ~Milk() override {
+        std::cout << "Destroying Milk" << std::endl;
+    }
 
     std::string getDescription() const override {
         return beverage->getDescription() + ", Milk";
@@ -66,6 +83,10 @@ private:
 
 public:
     explicit Sugar(std::shared_ptr<Beverage> bev) : beverage(std::move(bev)) {}
+
+    ~Sugar() override {
+        std::cout << "Destroying Sugar" << std::endl;
+    }
 
     std::string getDescription() const override {
         return beverage->getDescription() + ", Sugar";

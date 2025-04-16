@@ -1,20 +1,9 @@
-﻿# CMakeList.txt : CMake project for TreeDiameter, include source and define
-# project specific logic here.
+﻿# CMakeList.txt : Top-level CMake project file, do global configuration
+# and include sub-projects here.
 #
 cmake_minimum_required (VERSION 3.14)
 
-# Define the project name
-project(TreeDiameter)
+project(Trees)
 
-# Create library from source files
-add_library(TreeDiameterLib 
-    "BinaryTree.cpp"
-    "TreeNode.cpp"
-)
-
-# Add source to this project's executable.
-add_executable (TreeDiameter "main.cpp")
-target_link_libraries(TreeDiameter PRIVATE TreeDiameterLib)
-
-# Add the test subdirectory
-add_subdirectory(test)
+# Include sub-projects.
+add_subdirectory ("Diameter")

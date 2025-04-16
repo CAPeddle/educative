@@ -3,6 +3,25 @@
 #include <queue>
 #include "TreeNode.cpp"
 
+int MaxBranchLength(TreeNode<int> *root)
+{
+    if (root == nullptr) return 0;
+
+    auto leftBranchLength = MaxBranchLength(root->left) + 1;
+    auto rightBranchLength = MaxBranchLength(root->left) + 1;
+    
+    return std::max(leftBranchLength,rightBranchLength);
+}
+
+
+// DiameterOfBinaryTree returns the diameter of tree
+int DiameterOfBinaryTree(TreeNode<int> *root)
+{
+
+    // Replace this placeholder return statement with your code
+    return -1;
+}
+
 template<class T>
 class BinaryTree {
 public:

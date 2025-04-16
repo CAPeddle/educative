@@ -17,4 +17,4 @@ add_executable (TreeDiameter "main.cpp")
 target_link_libraries(TreeDiameter PRIVATE TreeDiameterLib)
 
 # Add the test subdirectory
-# add_subdirectory(test)
+add_subdirectory(test)

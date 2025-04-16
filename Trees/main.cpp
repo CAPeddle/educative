@@ -22,6 +22,7 @@ int main()
         y++;
     }
 
+    std::cout << std::endl << std::endl;
 
     y = 1;
     for (const BinaryTree<int> tree : listOfTrees)
@@ -29,7 +30,9 @@ int main()
         
         std::cout << y << ".\tBinary tree:\n";
         // DisplayTree(tree.root);
-        std::cout << "\tDiameter of the tree: " << MaxBranchLength(tree.root) << "\n";
+        int diameter = 0;
+        DiameterOfBinaryTreeHelper(tree.root, diameter);
+        std::cout << "\tMax Branch of the tree: " << diameter << "\n";
         std::cout << std::string(100, '-') << std::endl;
         y++;
     }

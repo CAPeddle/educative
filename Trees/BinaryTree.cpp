@@ -3,23 +3,26 @@
 #include <queue>
 #include "TreeNode.cpp"
 
-int MaxBranchLength(TreeNode<int> *root)
+int DiameterOfBinaryTreeHelper(TreeNode<int> *root, int &diameter)
 {
     if (root == nullptr) return 0;
 
-    auto leftBranchLength = MaxBranchLength(root->left) + 1;
-    auto rightBranchLength = MaxBranchLength(root->left) + 1;
+    auto leftBranchLength = DiameterOfBinaryTreeHelper(root->left, diameter);
+    auto rightBranchLength = DiameterOfBinaryTreeHelper(root->right, diameter);
     
-    return std::max(leftBranchLength,rightBranchLength);
+    diameter = std::max(diameter , leftBranchLength + rightBranchLength);
+
+    return std::max(leftBranchLength, rightBranchLength) + 1;
 }
 
 
 // DiameterOfBinaryTree returns the diameter of tree
 int DiameterOfBinaryTree(TreeNode<int> *root)
 {
-
+    int diameter = 0;
+    DiameterOfBinaryTreeHelper(root, diameter);
     // Replace this placeholder return statement with your code
-    return -1;
+    return diameter;
 }
 
 template<class T>

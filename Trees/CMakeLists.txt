@@ -7,3 +7,4 @@ project(Trees)
 
 # Include sub-projects.
 add_subdirectory ("Diameter")
+add_subdirectory ("Serialize")

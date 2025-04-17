@@ -1,5 +1,5 @@
-#ifndef FACADE_HPP
-#define FACADE_HPP
+#ifndef DECORATOR_HPP
+#define DECORATOR_HPP
 
 #include <string>
 #include <memory>
@@ -76,4 +76,4 @@ public:
     }
 };
 
-#endif // FACADE_HPP
+#endif // DECORATOR_HPP

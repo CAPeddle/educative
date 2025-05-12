@@ -1,7 +1,7 @@
 // BreadthFirstGraphTraversal.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "../AdditionalFiles/Graph.h"
+#include "Graph.h"
 #include <iostream>
 
 int main()
